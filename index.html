@@ -1,313 +1,1002 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<!-- This is an internal GitHub prototype, not a production SEO page. -->
-<meta content="noindex, nofollow" name="robots"/>
-<title>RezLive Service Page Cluster — Manager Prototype</title>
-<meta content="Internal prototype of RezLive product-specific landing pages for Hotels, Sightseeing, Transfers, Rail, Cruise and Car Rental." name="description"/>
-<style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- GitHub manager prototype: keep out of search indexes. -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>About RezLive.com | Global B2B Travel Booking Platform</title>
+  <meta name="description" content="Learn about RezLive.com, a global B2B travel booking platform by Travel Designer Group helping travel agents, OTAs, DMCs and tour operators book hotels, transfers, sightseeing, rail, cruises, cars and travel services worldwide.">
+
+  <!-- Production SEO reference. Keep noindex on GitHub; use this canonical after launch on RezLive.com. -->
+  <link rel="canonical" href="https://www.rezlive.com/about-us/">
+  <link rel="preload" as="image" href="assets/rezlive-inner-banner.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About RezLive.com | Global B2B Travel Booking Platform">
+  <meta property="og:description" content="Discover RezLive.com, the B2B travel booking platform by Travel Designer Group for travel agents, OTAs, DMCs and tour operators.">
+  <meta property="og:url" content="https://www.rezlive.com/about-us/">
+  <meta property="og:image" content="https://www.rezlive.com/rezlive7/static/images/about-rezlive-og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="https://cdn.rezlive.com/rezlive7/static/css/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.rezlive.com/rezlive7/static/css/font-awesome/all.css">
+  <link rel="stylesheet" href="https://cdn.rezlive.com/rezlive7/static/css/style-new.css">
+  <link rel="stylesheet" href="https://cdn.rezlive.com/rezlive7/static/css/media.css">
+
+  <style>
     :root {
       --rez-purple: #321582;
       --rez-purple-dark: #1d1b72;
       --rez-orange: #f99f25;
       --rez-blue: #2c99c1;
-      --rez-text: #181818;
-      --rez-border: #ded9ef;
-      --rez-soft: #faf9fd;
+      --rez-text: #161616;
+      --rez-muted: #5c5c5c;
+      --rez-border: #321582;
+      --rez-soft: #f8f8fb;
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       color: var(--rez-text);
-      background: #ffffff;
+      background: #fff;
       font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.55;
+      font-size: 15px;
+      line-height: 1.6;
     }
 
-    a { text-decoration: none; }
+    a {
+      color: var(--rez-purple);
+      text-decoration: none;
+    }
 
-    .site-header {
-      min-height: 106px;
+    a:hover {
+      color: var(--rez-orange);
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .site-container {
+      width: min(1170px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    /* Header closely follows the current RezLive static-page UI. */
+    .rez-header {
+      position: relative;
+      z-index: 50;
+      min-height: 109px;
+      display: flex;
+      align-items: center;
+      background: #fff;
+    }
+
+    .header-inner {
+      width: min(1170px, calc(100% - 56px));
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      padding: 18px 5%;
+      gap: 28px;
+    }
+
+    .header-logo {
+      display: block;
+      width: 168px;
+      flex: 0 0 auto;
+    }
+
+    .primary-nav {
+      display: flex;
+      align-items: center;
+      gap: 27px;
+      margin-left: auto;
+      font-size: 14px;
+    }
+
+    .primary-nav > a,
+    .nav-dropdown > a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 40px;
+      color: #111;
+      white-space: nowrap;
+    }
+
+    .primary-nav > a:hover,
+    .nav-dropdown > a:hover,
+    .primary-nav .active {
+      color: var(--rez-orange);
+    }
+
+    .signup-link {
+      min-height: 34px !important;
+      padding: 7px 19px;
+      border-radius: 6px;
+      color: #fff !important;
+      background: var(--rez-purple);
+      font-weight: 700;
+    }
+
+    .signup-link:hover {
+      color: #fff !important;
+      background: var(--rez-orange);
+    }
+
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .nav-dropdown > a::after {
+      content: "▾";
+      margin-left: 6px;
+      font-size: 11px;
+    }
+
+    .services-menu {
+      position: absolute;
+      top: calc(100% - 1px);
+      left: -15px;
+      width: 235px;
+      display: none;
+      padding: 9px 0;
+      border: 1px solid #e2dded;
+      border-radius: 6px;
+      background: #fff;
+      box-shadow: 0 10px 28px rgba(30, 15, 81, .16);
+    }
+
+    .services-menu a {
+      display: block;
+      padding: 9px 17px;
+      color: var(--rez-purple);
+    }
+
+    .services-menu a:hover {
+      color: var(--rez-orange);
+      background: #faf8ff;
+    }
+
+    .nav-dropdown:hover .services-menu,
+    .nav-dropdown:focus-within .services-menu {
+      display: block;
+    }
+
+    /* Same destination skyline banner used across the prototype pages. */
+    .inner-middle-bg {
+      min-height: 178px;
+      background:
+        linear-gradient(rgba(49,20,130,.03), rgba(49,20,130,.03)),
+        url("assets/rezlive-inner-banner.png") center bottom / cover no-repeat,
+        linear-gradient(90deg, #311483, #4b119d);
+    }
+
+    .common-section {
+      padding: 17px 0 52px;
+    }
+
+    .content-row {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 -12px;
+    }
+
+    .sidebar-column,
+    .content-column {
+      padding: 0 12px;
+    }
+
+    .sidebar-column { width: 24%; }
+    .content-column { width: 76%; }
+
+    /* Existing About-page sidebar style. */
+    .about-sidebar {
+      margin-bottom: 20px;
+      overflow: hidden;
+      border: 1px solid var(--rez-border);
+      border-radius: 6px;
       background: #fff;
     }
 
-    .brand {
-      display: inline-flex;
-      align-items: flex-end;
-      font-size: 43px;
-      font-weight: 700;
-      letter-spacing: -3px;
-      line-height: 1;
-    }
-
-    .brand .rez { color: var(--rez-orange); }
-    .brand .live { color: var(--rez-blue); }
-    .brand .com {
-      margin: 0 0 3px 3px;
-      padding: 1px 4px;
-      border: 1px solid var(--rez-orange);
-      color: var(--rez-orange);
-      font-size: 10px;
-      letter-spacing: 0;
-      line-height: 1.1;
-    }
-
-    .header-note {
-      color: var(--rez-purple);
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .skyline-banner {
-      min-height: 178px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 28px;
-      text-align: center;
-      background:
-        radial-gradient(circle at 18% 75%, rgba(249,159,37,.75) 0 7px, transparent 8px),
-        radial-gradient(circle at 77% 30%, rgba(249,159,37,.75) 0 9px, transparent 10px),
-        linear-gradient(120deg, #24106d, #4a109d 62%, #321582);
-      color: #fff;
-    }
-
-    .skyline-banner div {
-      max-width: 760px;
-    }
-
-    .skyline-banner p {
-      margin: 0 0 6px;
-      color: #f7b24e;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      font-size: 13px;
-    }
-
-    .skyline-banner h1 {
+    .about-sidebar ul {
+      list-style: none;
       margin: 0;
+      padding: 17px 0;
+    }
+
+    .about-sidebar li {
+      margin: 0;
+    }
+
+    .about-sidebar a {
+      display: block;
+      padding: 7px 22px;
+      border-left: 4px solid transparent;
+      color: var(--rez-purple);
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .about-sidebar a:hover {
+      color: var(--rez-orange);
+      background: #faf8ff;
+    }
+
+    .about-sidebar a.active {
       color: #fff;
-      font-size: clamp(29px, 5vw, 45px);
+      background: var(--rez-purple);
+      border-left-color: var(--rez-orange);
+      font-weight: 700;
+    }
+
+    .staticpage h1 {
+      margin: 0 0 13px;
+      color: var(--rez-purple);
+      font-size: 33px;
+      line-height: 1.22;
+      font-weight: 800;
+    }
+
+    .staticpage h2 {
+      margin: 25px 0 11px;
+      color: var(--rez-purple);
+      font-size: 22px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .staticpage .intro {
+      margin: 0 0 18px;
+      color: #222;
+      font-size: 18px;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+
+    .staticpage p {
+      margin: 0 0 15px;
+      color: #242424;
+      font-size: 15.5px;
+      line-height: 1.72;
+    }
+
+    .answer-box {
+      margin: 18px 0 23px;
+      padding: 18px 20px;
+      border-left: 5px solid var(--rez-blue);
+      border-radius: 5px;
+      background: #f5fbfd;
+    }
+
+    .answer-box p {
+      margin: 0;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin: 20px 0 25px;
+    }
+
+    .proof-card {
+      min-height: 112px;
+      padding: 16px 14px;
+      border-radius: 6px;
+      color: #fff;
+      background: var(--rez-purple);
+      box-shadow: 2px 5px 12px rgba(0,0,0,.20);
+      text-align: center;
+    }
+
+    .proof-card strong {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--rez-orange);
+      font-size: 23px;
       line-height: 1.15;
     }
 
-    main {
-      width: min(1080px, calc(100% - 34px));
-      margin: 0 auto;
-      padding: 44px 0 70px;
-    }
-
-    .intro {
-      max-width: 820px;
-      margin: 0 auto 32px;
-      text-align: center;
-    }
-
-    .intro h2 {
-      margin: 0 0 10px;
-      color: var(--rez-purple);
-      font-size: 29px;
-    }
-
-    .intro p {
-      margin: 0;
-      color: #555;
-      font-size: 17px;
-    }
-
-    .page-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .page-card {
-      overflow: hidden;
-      border: 1px solid var(--rez-border);
-      border-radius: 8px;
-      background: #fff;
-      box-shadow: 2px 6px 18px rgba(35, 16, 109, .14);
-    }
-
-    .card-top {
-      padding: 22px 25px;
-      background: var(--rez-purple);
-      color: #fff;
-    }
-
-    .card-top span {
+    .proof-card span {
       display: block;
-      margin-bottom: 5px;
-      color: #f6b24c;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .07em;
-      text-transform: uppercase;
+      font-size: 13.5px;
+      line-height: 1.4;
     }
 
-    .card-top h3 {
-      margin: 0;
+    .service-links {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 17px 0 23px;
+    }
+
+    .service-links a {
+      display: block;
+      padding: 14px 15px;
+      border: 1px solid #ddd5ef;
+      border-radius: 6px;
+      color: var(--rez-purple);
+      background: #fff;
+      box-shadow: 0 3px 10px rgba(32, 17, 82, .07);
+      font-weight: 700;
+    }
+
+    .service-links a:hover {
       color: #fff;
-      font-size: 25px;
+      background: var(--rez-purple);
+      border-color: var(--rez-purple);
     }
 
-    .card-body {
-      padding: 25px;
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 22px 0 8px;
     }
 
-    .card-body p {
-      min-height: 76px;
-      margin: 0 0 21px;
-      color: #555;
-    }
-
-    .open-button {
+    .rez-btn {
       display: inline-flex;
       min-height: 45px;
       align-items: center;
       justify-content: center;
-      padding: 10px 19px;
+      padding: 10px 20px;
       border-radius: 5px;
-      background: var(--rez-orange);
-      color: #fff;
       font-weight: 800;
     }
 
-    .open-button:hover {
+    .rez-btn-primary {
+      color: #fff;
+      background: var(--rez-orange);
+    }
+
+    .rez-btn-primary:hover {
+      color: #fff;
       background: var(--rez-purple);
     }
 
-    .prototype-note {
-      margin-top: 30px;
-      padding: 17px 19px;
-      border-left: 5px solid var(--rez-orange);
-      background: #fff8ed;
-      color: #4f4334;
+    .rez-btn-secondary {
+      border: 1px solid var(--rez-purple);
+      color: var(--rez-purple);
+      background: #fff;
     }
 
-    footer {
-      padding: 35px 5%;
-      background: var(--rez-purple-dark);
+    .rez-btn-secondary:hover {
       color: #fff;
+      background: var(--rez-purple);
+    }
+
+    .quote-line {
+      margin: 22px 30px !important;
+      padding: 14px 17px;
+      border-left: 4px solid var(--rez-orange);
+      color: #392d56 !important;
+      background: #faf8ff;
+      font-size: 17px !important;
+      font-style: italic;
+    }
+
+    /* Other TDG brands section follows the current About page layout language. */
+    .brands-heading {
+      padding: 17px 0;
+      background: var(--rez-purple);
+    }
+
+    .brands-heading h2 {
+      margin: 0;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .brands-wrap {
+      background: #fff;
+    }
+
+    .brand-row {
+      display: grid;
+      grid-template-columns: 34% 66%;
+      min-height: 230px;
+    }
+
+    .brand-row:nth-child(even) {
+      grid-template-columns: 66% 34%;
+    }
+
+    .brand-visual,
+    .brand-copy {
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-visual {
+      justify-content: center;
+      padding: 34px;
+      background: #2c99c1;
+    }
+
+    .brand-row:nth-child(2) .brand-visual {
+      background: var(--rez-orange);
+    }
+
+    .brand-row:nth-child(3) .brand-visual {
+      background: #ffd33f;
+    }
+
+    .brand-copy {
+      padding: 34px 43px;
+    }
+
+    .brand-copy p {
+      margin: 0 0 12px;
+      font-size: 15.5px;
+      line-height: 1.7;
+    }
+
+    .brand-wordmark {
+      color: #fff;
+      font-size: 32px;
+      font-weight: 900;
       text-align: center;
+      letter-spacing: -.03em;
     }
 
-    footer strong { color: var(--rez-orange); }
-
-    @media (max-width: 960px) {
-      .page-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .brand-wordmark small {
+      display: block;
+      margin-top: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .02em;
     }
 
-    @media (max-width: 720px) {
-      .site-header {
-        min-height: 90px;
-        padding: 16px 22px;
+    .brand-logo-img {
+      max-width: 230px;
+      max-height: 110px;
+      object-fit: contain;
+    }
+
+    .prefooter {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      padding: 25px 5%;
+      border-top: 1px solid #ddd;
+      background: #fff;
+    }
+
+    .prefooter h3 {
+      margin: 0 0 11px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .product-strip,
+    .affiliation-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .mini-brand {
+      padding: 6px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      color: var(--rez-purple);
+      background: #fff;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .rez-footer {
+      padding: 48px 5% 24px;
+      color: #fff;
+      background: var(--rez-purple-dark);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .8fr 1fr;
+      gap: 48px;
+      max-width: 1170px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      width: 165px;
+      margin-bottom: 20px;
+    }
+
+    .rez-footer h2 {
+      margin: 0 0 7px;
+      color: var(--rez-orange);
+      font-size: 34px;
+      font-weight: 800;
+    }
+
+    .rez-footer p,
+    .rez-footer a {
+      color: #fff;
+    }
+
+    .rez-footer ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .rez-footer li {
+      margin-bottom: 9px;
+    }
+
+    .newsletter {
+      width: 100%;
+      min-height: 42px;
+      margin: 12px 0;
+      padding: 10px 12px;
+      border: 0;
+      border-radius: 4px;
+    }
+
+    .subscribe-btn {
+      width: 100%;
+      min-height: 42px;
+      border: 0;
+      border-radius: 4px;
+      color: #fff;
+      background: var(--rez-orange);
+      font-weight: 800;
+    }
+
+    .footer-bottom {
+      max-width: 1170px;
+      margin: 36px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,.18);
+      color: #b9b6de;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1050px) {
+      .primary-nav { gap: 15px; }
+      .proof-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 860px) {
+      .header-inner {
+        width: calc(100% - 32px);
+        padding: 10px 0;
+        flex-wrap: wrap;
       }
 
-      .brand { font-size: 35px; }
-      .header-note { display: none; }
-      .page-grid { grid-template-columns: 1fr; }
-      .card-body p { min-height: auto; }
+      .rez-header { min-height: 92px; }
+      .primary-nav {
+        width: 100%;
+        order: 2;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+      .sidebar-column,
+      .content-column {
+        width: 100%;
+      }
+
+      .about-sidebar {
+        margin-bottom: 24px;
+      }
+
+      .about-sidebar ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 8px;
+      }
+
+      .about-sidebar a {
+        padding: 10px;
+        border-left: 0;
+        border-bottom: 3px solid transparent;
+      }
+
+      .about-sidebar a.active {
+        border-bottom-color: var(--rez-orange);
+      }
+
+      .service-links {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .inner-middle-bg { min-height: 112px; }
+
+      .primary-nav > a,
+      .nav-dropdown > a {
+        font-size: 13px;
+      }
+
+      .signup-link {
+        padding: 6px 13px;
+      }
+
+      .about-sidebar ul {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .staticpage h1 {
+        font-size: 27px;
+      }
+
+      .proof-grid,
+      .service-links {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-row,
+      .brand-row:nth-child(even) {
+        grid-template-columns: 1fr;
+      }
+
+      .brand-row:nth-child(even) .brand-copy {
+        order: 2;
+      }
+
+      .prefooter,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://www.rezlive.com/#website",
+        "url": "https://www.rezlive.com/",
+        "name": "RezLive.com",
+        "publisher": {
+          "@id": "https://www.rezlive.com/#organization"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://www.rezlive.com/#organization",
+        "name": "RezLive.com",
+        "url": "https://www.rezlive.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.rezlive.com/rezlive7/images/logo.png"
+        },
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Travel Designer Group"
+        },
+        "foundingDate": "2007",
+        "sameAs": [
+          "https://www.linkedin.com/company/travel-designer-india-pvt-ltd",
+          "https://www.youtube.com/@rezlive/videos"
+        ]
+      },
+      {
+        "@type": "AboutPage",
+        "@id": "https://www.rezlive.com/about-us/#aboutpage",
+        "url": "https://www.rezlive.com/about-us/",
+        "name": "About RezLive: A Global B2B Travel Booking Platform",
+        "description": "About RezLive.com, a global B2B travel booking platform by Travel Designer Group for travel agents, OTAs, DMCs and tour operators.",
+        "isPartOf": {
+          "@id": "https://www.rezlive.com/#website"
+        },
+        "about": {
+          "@id": "https://www.rezlive.com/#organization"
+        },
+        "breadcrumb": {
+          "@id": "https://www.rezlive.com/about-us/#breadcrumb"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.rezlive.com/about-us/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.rezlive.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About RezLive",
+            "item": "https://www.rezlive.com/about-us/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
-<body>
-<header class="site-header">
-<a aria-label="RezLive prototype home" class="brand" href="./index.html">
-<span class="rez">rez</span><span class="live">live</span><span class="com">.com</span>
-</a>
-<span class="header-note">New service-page cluster prototype</span>
-</header>
-<section class="skyline-banner">
-<div>
-<p>Internal manager preview</p>
-<h1>RezLive Product-Specific Landing Pages</h1>
-</div>
-</section>
-<main>
-<section class="intro">
-<h2>Select a service page</h2>
-<p>
-        This prototype demonstrates how RezLive can use one consistent visual design,
-        crawlable service navigation and SEO-focused content across product landing pages.
-      </p>
-</section>
-<div class="page-grid"><article class="page-card">
-<div class="card-top">
-<span>Service page 01</span>
-<h3>RezLive Hotels</h3>
-</div>
-<div class="card-body">
-<p>B2B hotel booking landing page for travel agents, OTAs, DMCs, tour operators and travel businesses.</p>
-<a class="open-button" href="./rezlive-b2b-hotel-booking-platform.html">Open Hotel Page</a>
-</div>
-</article><article class="page-card">
-<div class="card-top">
-<span>Service page 02</span>
-<h3>RezLive Sightseeing</h3>
-</div>
-<div class="card-body">
-<p>B2B sightseeing landing page covering global tours, attractions and activities for travel professionals.</p>
-<a class="open-button" href="./rezlive-b2b-sightseeing-booking-platform.html">Open Sightseeing Page</a>
-</div>
-</article><article class="page-card">
-<div class="card-top">
-<span>Service page 03</span>
-<h3>RezLive Transfers</h3>
-</div>
-<div class="card-body">
-<p>B2B transfer landing page for airport, hotel, city and supported intercity ground transportation.</p>
-<a class="open-button" href="./rezlive-b2b-transfer-booking-platform.html">Open Transfer Page</a>
-</div>
-</article><article class="page-card">
-<div class="card-top">
-<span>Service page 04</span>
-<h3>RezLive Rail</h3>
-</div>
-<div class="card-body">
-<p>B2B European rail landing page for supported train tickets, rail passes and multi-country journeys.</p>
-<a class="open-button" href="./rezlive-b2b-rail-booking-platform.html">Open Rail Page</a>
-</div>
-</article><article class="page-card">
-<div class="card-top">
-<span>Service page 05</span>
-<h3>RezLive Cruise</h3>
-</div>
-<div class="card-body">
-<p>B2B cruise booking landing page covering selected online inventory and assisted cruise quotations.</p>
-<a class="open-button" href="./rezlive-b2b-cruise-booking-platform.html">Open Cruise Page</a>
-</div>
-</article><article class="page-card">
-<div class="card-top">
-<span>Service page 06</span>
-<h3>RezLive Car Rental</h3>
-</div>
-<div class="card-body">
-<p>B2B car rental landing page for worldwide vehicle hire across supported rental locations and suppliers.</p>
-<a class="open-button" href="./rezlive-b2b-car-rental-platform.html">Open Car Rental Page</a>
-</div>
-</article></div>
-<div class="prototype-note">
-<strong>Complete service-page cluster:</strong>
-    all six GitHub prototype pages are now connected through this
-    <code>index.html</code>. The prototype remains protected with
-    <code>noindex, nofollow</code> so it does not compete with future
-    production pages on RezLive.com.
-    </div>
-</main>
-<footer>
-<strong>RezLive.com</strong> — service-page cluster prototype for internal review
-  </footer>
+
+<body class="inner-pages">
+  <div id="main-container">
+    <header class="rez-header" id="header">
+      <div class="header-inner">
+        <a class="header-logo" href="./index.html" aria-label="RezLive prototype home">
+          <img src="assets/rezlive-logo.png" alt="RezLive.com award-winning global reservation system">
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a href="./index.html">Home</a>
+          <a class="active" href="./index.html" aria-current="page">About Us</a>
+
+          <!-- Required change: XML/API now opens the RezTez website. -->
+          <a href="https://www.reztez.com/">XML/API</a>
+
+          <!-- Required change: Services appears immediately after XML/API. -->
+          <div class="nav-dropdown">
+            <a href="./rezlive-b2b-hotel-booking-platform.html">Services</a>
+            <div class="services-menu" aria-label="RezLive services">
+              <a href="./rezlive-b2b-hotel-booking-platform.html">Hotels</a>
+              <a href="./rezlive-b2b-sightseeing-booking-platform.html">Sightseeing</a>
+              <a href="./rezlive-b2b-transfer-booking-platform.html">Transfers</a>
+              <a href="./rezlive-b2b-rail-booking-platform.html">Rail</a>
+              <a href="./rezlive-b2b-cruise-booking-platform.html">Cruise</a>
+              <a href="./rezlive-b2b-car-rental-platform.html">Car Rental</a>
+            </div>
+          </div>
+
+          <a href="https://www.rezlive.com/staticpagesrezlive/accolades.html">Accolades</a>
+          <a href="https://www.rezlive.com/staticpagesrezlive/reach-us.html">Reach Us</a>
+          <a class="signup-link" href="https://www.rezlive.com/common/index/action/agentregistration">Sign Up</a>
+          <a href="#" aria-label="Language selector">English ▾</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="middle">
+      <div class="inner-middle-bg inner-aboutus-middle-bg" role="img" aria-label="RezLive global travel destination skyline"></div>
+
+      <section class="common-section">
+        <div class="site-container">
+          <div class="content-row">
+            <aside class="sidebar-column" aria-label="About RezLive navigation">
+              <nav class="about-sidebar">
+                <ul>
+                  <li><a class="active" href="./index.html" aria-current="page">About RezLive</a></li>
+                  <li><a href="https://www.rezlive.com/staticpagesrezlive/accolades.html">Accolades</a></li>
+                  <li><a href="https://www.rezlive.com/staticpagesrezlive/aboutus.html">Why RezLive?</a></li>
+
+                  <!-- Required change: XML Connect now opens RezTez. -->
+                  <li><a href="https://www.reztez.com/">XML Connect</a></li>
+
+                  <li><a href="https://www.rezlive.com/staticpagesrezlive/smart-match.html">Smart Match</a></li>
+
+                  <!-- Required change: Services added immediately below Smart Match. -->
+                  <li><a href="./rezlive-b2b-hotel-booking-platform.html">Services</a></li>
+
+                  <li><a href="https://www.rezlive.com/staticpagesrezlive/accreditation-and-affiliation.html">Accreditation &amp; Affiliation</a></li>
+                  <li><a href="https://www.rezlive.com/staticpagesrezlive/people-and-values.html">People &amp; Values</a></li>
+                  <li><a href="https://www.rezlive.com/staticpagesrezlive/news-events.html">News</a></li>
+                  <li><a href="https://www.rezlive.com/staticpagesrezlive/reach-us.html">Reach Us</a></li>
+                  <li><a href="https://www.rezlive.com/staticpagesrezlive/list-your-property.html">List Your Property</a></li>
+                </ul>
+              </nav>
+            </aside>
+
+            <div class="content-column">
+              <article class="staticpage">
+                <h1>About RezLive: A Global B2B Travel Booking Platform</h1>
+
+                <p class="intro">
+                  RezLive.com is a globally acclaimed B2B online reservation system designed for professional travel partners who need reliable access to global travel inventory.
+                </p>
+
+                <div class="answer-box">
+                  <p>
+                    <strong>RezLive is a B2B travel booking platform by Travel Designer Group</strong> that helps travel agents, OTAs, DMCs, tour operators, wholesalers and corporate travel businesses search, compare and book hotels, sightseeing, transfers, rail, cruises, car rentals and other travel services for their customers.
+                  </p>
+                </div>
+
+                <h2>Built for Travel Agents, OTAs, DMCs and Tour Operators</h2>
+                <p>
+                  Launched in 2007 in India, RezLive.com is the flagship product of Travel Designer Group. From its beginnings in Ahmedabad, the business has developed into a global B2B travel platform serving professional tourism partners across the Middle East, South Asia, Southeast Asia and other international markets.
+                </p>
+                <p>
+                  Travel agents and travel companies use RezLive to arrange leisure, corporate, group and customised travel requirements. The platform is designed for trade users rather than direct consumers, helping approved travel partners access relevant inventory, compare booking conditions and manage services for their clients through the RezLive Point of Sales website, mobile solutions and available connectivity options.
+                </p>
+
+                <div class="cta-row">
+                  <a class="rez-btn rez-btn-primary" href="https://www.rezlive.com/common/index/action/agentregistration">Register as a Travel Agent</a>
+                  <a class="rez-btn rez-btn-secondary" href="https://www.reztez.com/">Explore RezTez XML/API Connectivity</a>
+                </div>
+
+                <h2>RezLive's Global Travel Inventory</h2>
+                <p>
+                  RezLive connects travel partners with an extensive selection of accommodation, destination experiences and mobility products. The current RezLive offering includes hotel and apartment inventory, sightseeing attractions and activities, private and shared transfers, European rail products, cruise booking support, car rental and travel insurance services.
+                </p>
+
+                <div class="proof-grid" aria-label="RezLive platform figures">
+                  <div class="proof-card">
+                    <strong>500,000+</strong>
+                    <span>hotel and apartment rooms</span>
+                  </div>
+                  <div class="proof-card">
+                    <strong>45,000+</strong>
+                    <span>sightseeing attractions</span>
+                  </div>
+                  <div class="proof-card">
+                    <strong>900+</strong>
+                    <span>cities with transfer coverage</span>
+                  </div>
+                  <div class="proof-card">
+                    <strong>30,000+</strong>
+                    <span>car rental locations</span>
+                  </div>
+                </div>
+
+                <p>
+                  Through its booking platform and business connectivity, RezLive helps travel professionals serve customers across different destinations, budgets and trip types. Its multi-product structure also gives agents the opportunity to connect accommodation with sightseeing, airport transfers, intercity mobility and other services required for a complete itinerary.
+                </p>
+
+                <h2>Explore RezLive's B2B Travel Services</h2>
+                <div class="service-links">
+                  <a href="./rezlive-b2b-hotel-booking-platform.html">B2B Hotel Booking Platform</a>
+                  <a href="./rezlive-b2b-sightseeing-booking-platform.html">B2B Sightseeing Booking Platform</a>
+                  <a href="./rezlive-b2b-transfer-booking-platform.html">B2B Transfer Booking Platform</a>
+                  <a href="./rezlive-b2b-rail-booking-platform.html">B2B European Rail Booking</a>
+                  <a href="./rezlive-b2b-cruise-booking-platform.html">B2B Cruise Booking Platform</a>
+                  <a href="./rezlive-b2b-car-rental-platform.html">B2B Car Rental Platform</a>
+                </div>
+
+                <h2>Award-Winning B2B Travel Technology by Travel Designer Group</h2>
+                <p>
+                  RezLive.com has been recognised as Asia's and India's Leading B2B Travel Provider at the World Travel Tech Awards from 2021 to 2024, and as World's Leading B2B Travel Provider at the World Travel Awards 2018. These recognitions reflect the platform's focus on travel-trade technology, global reach, partner support and continuous product development.
+                </p>
+
+                <p class="quote-line">
+                  Whether the requirement is leisure, business or group travel, RezLive helps travel professionals find and arrange suitable travel products for their clients through one B2B reservation ecosystem.
+                </p>
+
+                <h2>Global Reach and Travel-Trade Relationships</h2>
+                <p>
+                  RezLive reports a network of more than 40,000 travel partners across over 60 countries. Its international presence, local market teams and post-booking support structure help the company work with travel businesses that have different source markets, customer profiles and operational requirements.
+                </p>
+                <p>
+                  The platform's B2B focus enables RezLive to support independent agents, established agencies, destination management companies, online travel businesses and technology-led travel sellers. Eligible companies that need hotel content inside their own website or reservation system can also explore RezTez's XML and JSON API connectivity.
+                </p>
+
+                <h2>Partner with RezLive</h2>
+                <p>
+                  Whether you are a travel agent, OTA, DMC, tour operator, wholesaler or travel technology company, RezLive can help you access global travel inventory and strengthen your B2B travel offering. Register for the booking platform to explore available services, or connect with RezTez when your business requires scalable hotel API distribution.
+                </p>
+
+                <div class="cta-row">
+                  <a class="rez-btn rez-btn-primary" href="https://www.rezlive.com/common/index/action/agentregistration">Start Your RezLive Registration</a>
+                  <a class="rez-btn rez-btn-secondary" href="https://www.reztez.com/">Visit RezTez.com</a>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="brands-wrap" aria-labelledby="tdg-brands-title">
+        <div class="brands-heading">
+          <div class="site-container">
+            <h2 id="tdg-brands-title">Other Leading Global Brands of Travel Designer Group:</h2>
+          </div>
+        </div>
+
+        <div class="brand-row">
+          <div class="brand-visual">
+            <img class="brand-logo-img" src="https://cdn.rezlive.com/rezlive7/static/images/dvoyages_Linkdin.png" alt="Designer Voyages logo">
+          </div>
+          <div class="brand-copy">
+            <p>
+              <strong>Designer Voyages</strong> offers destination services and carefully developed travel programmes for groups visiting the UAE, supported by Travel Designer Group's regional travel experience.
+            </p>
+          </div>
+        </div>
+
+        <div class="brand-row">
+          <div class="brand-copy">
+            <div>
+              <p>
+                <strong>RezTez</strong> provides fast, light and scalable hotel API distribution for online travel agencies, DMCs and travel technology companies. XML and JSON connectivity helps eligible partners access mapped hotel content and real-time availability through one technology connection.
+              </p>
+              <p>
+                <a href="https://www.reztez.com/"><strong>Explore RezTez XML/API connectivity →</strong></a>
+              </p>
+            </div>
+          </div>
+          <div class="brand-visual">
+            <div class="brand-wordmark">
+              REZ<span style="color:#2c99c1;">TEZ</span>
+              <small>Build for speed · Ready for scale</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="brand-row">
+          <div class="brand-visual">
+            <img class="brand-logo-img" src="https://cdn.rezlive.com/rezlive7/static/images/brand-logo1.png" alt="Designer Packages logo">
+          </div>
+          <div class="brand-copy">
+            <p>
+              <strong>Designer Packages</strong> develops outbound travel packages for travel partners, covering short-haul and long-haul destinations with consolidated contracting, destination knowledge and trade support.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="prefooter">
+        <div>
+          <h3>Our Other Products</h3>
+          <div class="product-strip">
+            <span class="mini-brand">RezTez</span>
+            <span class="mini-brand">Designer Voyages</span>
+            <span class="mini-brand">Designer Packages</span>
+          </div>
+        </div>
+        <div>
+          <h3>Accreditation and Affiliation</h3>
+          <div class="affiliation-strip">
+            <span class="mini-brand">PATA</span>
+            <span class="mini-brand">IATA</span>
+            <span class="mini-brand">TAAI</span>
+            <span class="mini-brand">OTOAI</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="rez-footer">
+      <div class="footer-grid">
+        <div>
+          <img class="footer-logo" src="assets/rezlive-footer-logo.png" alt="RezLive.com">
+          <p>An award-winning global B2B reservation system by <strong style="color:#f99f25;">Travel Designer Group</strong>.</p>
+        </div>
+
+        <div>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="./index.html">About Us</a></li>
+            <li><a href="./rezlive-b2b-hotel-booking-platform.html">Services</a></li>
+            <li><a href="https://www.rezlive.com/staticpagesrezlive/reach-us.html">Reach Us</a></li>
+            <li><a href="https://www.rezlive.com/staticpagesrezlive/faq.html">FAQs</a></li>
+            <li><a href="https://www.reztez.com/">XML/API</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h2>Stay in touch!</h2>
+          <p>Subscribe to receive RezLive updates.</p>
+          <form action="#" method="post">
+            <label class="sr-only" for="newsletter-email">Email address</label>
+            <input class="newsletter" id="newsletter-email" name="email" type="email" placeholder="Enter your email id">
+            <button class="subscribe-btn" type="submit">Subscribe Now</button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        RezLive.com — About-page and service-cluster prototype for internal review.
+      </div>
+    </footer>
+  </div>
 </body>
 </html>
