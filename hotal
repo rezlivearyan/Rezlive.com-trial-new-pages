@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>B2B Hotel Booking Portal for Travel Agents | RezLive Prototype</title>
+<meta content="Prototype of RezLive B2B hotel booking page for travel agents and travel businesses." name="description"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+
+<meta content="website" property="og:type"/>
+<meta content="B2B Hotel Booking Portal for Travel Agents | RezLive Prototype" property="og:title"/>
+<meta content="Prototype of RezLive B2B hotel booking page for travel agents and travel businesses." property="og:description"/>
+
+
+<meta content="summary_large_image" name="twitter:card"/>
+<!-- Keep RezLive's existing production CSS -->
+<link href="https://cdn.rezlive.com/rezlive7/static/css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.rezlive.com/rezlive7/static/css/font-awesome/all.css" rel="stylesheet"/>
+<link href="https://cdn.rezlive.com/rezlive7/static/css/style-new.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.rezlive.com/rezlive7/static/css/media.css" rel="stylesheet" type="text/css"/>
+<!-- This page CSS extends the present RezLive visual system instead of replacing it -->
+<style>
+        :root {
+            --rez-purple: #321582;
+            --rez-purple-dark: #24106d;
+            --rez-orange: #f99f25;
+            --rez-blue: #2c99c1;
+            --rez-border: #321582;
+            --rez-text: #171717;
+            --rez-muted: #555;
+            --rez-soft: #f8f8fb;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            color: var(--rez-text);
+            background: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.58;
+        }
+        a { color: var(--rez-purple); text-decoration: none; }
+        a:hover { color: var(--rez-orange); text-decoration: none; }
+        img { max-width: 100%; height: auto; }
+        .clear, .clearfix { clear: both; }
+
+        /* Fallback header is visible only in the standalone preview.
+           On RezLive, the existing rez7_header.html will replace it. */
+        .preview-header {
+            min-height: 109px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 18px 4%;
+            background: #fff;
+        }
+        .preview-header .logo { width: 175px; }
+        .preview-header nav { display: flex; align-items: center; gap: 34px; font-size: 14px; }
+        .preview-header .signup {
+            padding: 9px 21px;
+            color: #fff;
+            background: var(--rez-purple);
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        /* Same inner-banner placement as the current RezLive static pages */
+        .inner-middle-bg {
+            min-height: 178px;
+            background:
+                linear-gradient(rgba(49,20,130,.04), rgba(49,20,130,.04)),
+                url("assets/rezlive-inner-banner.png") center bottom / cover no-repeat,
+                linear-gradient(90deg, #311483, #4b119d);
+        }
+
+        .common-section { padding: 17px 0 55px; }
+        .container {
+            width: min(1170px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -12px;
+        }
+        .col-sidebar, .col-content {
+            padding: 0 12px;
+        }
+        .col-sidebar { width: 24%; }
+        .col-content { width: 76%; }
+
+        /* Same narrow outlined left navigation style as screenshot */
+        .rez-service-sidebar {
+            border: 1px solid var(--rez-border);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        .rez-service-sidebar h2 {
+            margin: 0;
+            padding: 14px 22px 10px;
+            color: var(--rez-purple);
+            font-size: 17px;
+            font-weight: 700;
+        }
+        .rez-service-sidebar ul {
+            list-style: none;
+            margin: 0;
+            padding: 7px 0 14px;
+        }
+        .rez-service-sidebar li { margin: 0; }
+        .rez-service-sidebar a {
+            display: block;
+            padding: 8px 22px;
+            color: var(--rez-purple);
+            font-size: 15px;
+            line-height: 1.35;
+            border-left: 4px solid transparent;
+        }
+        .rez-service-sidebar a:hover {
+            color: var(--rez-orange);
+            background: #faf8ff;
+        }
+        .rez-service-sidebar a.active {
+            color: #fff;
+            background: var(--rez-purple);
+            border-left-color: var(--rez-orange);
+            font-weight: 700;
+        }
+
+        .sidebar-mini-cta {
+            margin-top: 15px;
+            padding: 17px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 0 3px 12px rgba(0,0,0,.08);
+        }
+        .sidebar-mini-cta p { margin: 0 0 12px; font-size: 14px; }
+        .sidebar-mini-cta a {
+            display: block;
+            padding: 10px 12px;
+            color: #fff;
+            background: var(--rez-orange);
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .staticpage { width: 100%; }
+        .page-kicker {
+            margin: 0 0 3px;
+            color: var(--rez-orange);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+        .staticpage h1 {
+            margin: 0 0 8px;
+            color: var(--rez-purple);
+            font-size: 34px;
+            line-height: 1.18;
+            font-weight: 800;
+        }
+        .staticpage .intro {
+            margin: 0 0 19px;
+            color: #222;
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        /* Matches the three purple feature tiles in the supplied UI */
+        .hotel-feature-strip ul {
+            display: flex;
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+            margin: 21px 0 19px;
+        }
+        .hotel-feature-strip li {
+            flex: 1 1 0;
+            min-height: 67px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 12px 15px;
+            color: #fff;
+            background: var(--rez-purple);
+            border-radius: 6px;
+            box-shadow: 2px 5px 12px rgba(0,0,0,.25);
+            text-align: center;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 15px;
+        }
+        .hotel-feature-strip .feature-icon {
+            font-size: 21px;
+            line-height: 1;
+        }
+
+        .content-copy {
+            color: #161616;
+            font-size: 16px;
+            line-height: 1.62;
+        }
+
+        /* Same white cards and soft shadow language as current page */
+        .rez-content-card {
+            margin: 22px 0;
+            padding: 19px 27px 23px;
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 2px 4px 16px rgba(0,0,0,.18);
+        }
+        .rez-content-card h2 {
+            margin: 0 0 14px;
+            color: #a00000;
+            font-size: 19px;
+            font-weight: 500;
+        }
+        .rez-content-card h3 {
+            margin: 18px 0 7px;
+            color: var(--rez-purple);
+            font-size: 18px;
+        }
+        .rez-content-card p { margin: 0 0 12px; }
+        .rez-content-card p:last-child { margin-bottom: 0; }
+
+        .tick-list {
+            list-style: none;
+            margin: 11px 0 0;
+            padding: 0;
+        }
+        .tick-list li {
+            position: relative;
+            margin: 0 0 12px;
+            padding-left: 28px;
+        }
+        .tick-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--rez-blue);
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .stats-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 13px;
+            margin: 20px 0;
+        }
+        .stat-row {
+            display: flex;
+            align-items: center;
+            min-height: 68px;
+            border: 1px solid #e3e3e3;
+            border-radius: 6px;
+            background: #fff;
+            overflow: hidden;
+        }
+        .stat-icon {
+            width: 72px;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: var(--rez-orange);
+            font-size: 24px;
+            border-radius: 6px 15px 15px 6px;
+        }
+        .stat-text {
+            padding: 10px 14px;
+            color: #1c1c1c;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .two-column-boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 17px;
+            margin: 20px 0;
+        }
+        .mini-box {
+            min-height: 165px;
+            padding: 18px 20px;
+            border: 1px solid #e1e1e1;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 1px 3px 11px rgba(0,0,0,.1);
+        }
+        .mini-box h3 {
+            margin: 0 0 7px;
+            color: var(--rez-purple);
+            font-size: 18px;
+        }
+        .mini-box p { margin: 0; color: #333; }
+
+        .process-list {
+            counter-reset: step;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .process-item {
+            min-height: 150px;
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+        }
+        .process-item:before {
+            counter-increment: step;
+            content: counter(step);
+            display: inline-flex;
+            width: 31px;
+            height: 31px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            color: #fff;
+            background: var(--orange, #f99f25);
+            border-radius: 50%;
+            font-weight: 800;
+        }
+        .process-item h3 {
+            margin: 0 0 5px;
+            color: var(--rez-purple);
+            font-size: 17px;
+        }
+        .process-item p { margin: 0; font-size: 14px; }
+
+        .related-services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .related-services a {
+            display: block;
+            padding: 14px 16px;
+            color: var(--rez-purple);
+            background: #fff;
+            border: 1px solid var(--rez-purple);
+            border-radius: 5px;
+            font-weight: 700;
+        }
+        .related-services a:hover {
+            color: #fff;
+            background: var(--rez-purple);
+        }
+
+        .faq-list { margin-top: 14px; }
+        .faq-item {
+            margin-bottom: 10px;
+            padding: 15px 18px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .faq-item h3 {
+            margin: 0 0 5px;
+            color: var(--rez-purple);
+            font-size: 17px;
+        }
+        .faq-item p { margin: 0; }
+
+        /* Form intentionally mirrors the current two-column contact block */
+        .quick-contact-blk {
+            margin-top: 26px;
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 2px 3px 17px rgba(0,0,0,.22);
+            overflow: hidden;
+        }
+        .quick-contact-hd {
+            padding: 9px 15px;
+            color: var(--rez-purple);
+            border-bottom: 1px solid var(--rez-purple);
+            font-size: 19px;
+            font-weight: 800;
+        }
+        .quick-contact-hd .phone-icon {
+            display: inline-block;
+            margin-right: 9px;
+            font-size: 25px;
+            vertical-align: middle;
+        }
+        .quick-contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .quick-contact-l, .quick-contact-r {
+            padding: 14px 16px 24px;
+        }
+        .quick-contact-l { border-right: 1px solid var(--rez-purple); }
+        .quick-contact-form ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .quick-contact-form li { margin-bottom: 14px; }
+        .quick-contact-form label {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .allstarcolor { color: red; }
+        .quick-contact-form input,
+        .quick-contact-form select,
+        .quick-contact-form textarea {
+            width: 100%;
+            min-height: 33px;
+            padding: 6px 0;
+            color: #222;
+            background: #fff;
+            border: 0;
+            border-bottom: 1px solid var(--rez-purple);
+            border-radius: 0;
+            outline: none;
+            font: inherit;
+            font-size: 14px;
+        }
+        .quick-contact-form textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+        .quick-contact-form input:focus,
+        .quick-contact-form select:focus,
+        .quick-contact-form textarea:focus {
+            border-bottom-color: var(--rez-orange);
+        }
+        .disclaimer {
+            margin: 7px 0 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .recaptcha-placeholder {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            color: #555;
+            background: #fafafa;
+            font-size: 12px;
+        }
+        .recaptcha-box {
+            width: 23px;
+            height: 23px;
+            border: 1px solid #777;
+            background: #fff;
+        }
+        .quick-contact-btn {
+            padding: 28px 17px 25px;
+            border-top: 1px solid var(--rez-purple);
+            text-align: right;
+        }
+        .quick-contact-btn input,
+        .quick-contact-btn button {
+            min-width: 88px;
+            margin-left: 9px;
+            padding: 11px 17px;
+            color: #fff;
+            background: var(--rez-purple);
+            border: 0;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .quick-contact-btn input:hover,
+        .quick-contact-btn button:hover {
+            background: var(--rez-orange);
+        }
+
+        /* Preview-only footer approximates the current site;
+           existing footer include replaces it in production. */
+        .preview-prefooter {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 22px 5%;
+            background: #fff;
+            border-top: 1px solid #eee;
+        }
+        .preview-prefooter > div { flex: 1; }
+        .preview-prefooter h3 { margin: 0 0 9px; font-size: 17px; font-weight: 500; }
+        .preview-footer {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr 1.2fr;
+            gap: 45px;
+            padding: 55px 5% 35px;
+            color: #fff;
+            background: #202078;
+        }
+        .preview-footer h2 {
+            margin: 0 0 5px;
+            color: var(--rez-orange);
+            font-size: 34px;
+        }
+        .preview-footer p, .preview-footer a { color: #fff; }
+        .preview-footer ul { list-style: none; margin: 0; padding: 0; }
+        .preview-footer li { margin-bottom: 9px; }
+        .newsletter {
+            width: 100%;
+            min-height: 42px;
+            padding: 9px 12px;
+            border: 0;
+            border-radius: 5px;
+            background: #11145e;
+            color: #fff;
+        }
+        .subscribe {
+            width: 100%;
+            margin-top: 12px;
+            padding: 12px;
+            color: #fff;
+            background: var(--rez-orange);
+            border: 0;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .seo-note {
+            margin-top: 12px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        @media (max-width: 991px) {
+            .preview-header nav { gap: 16px; }
+            .col-sidebar { width: 30%; }
+            .col-content { width: 70%; }
+            .hotel-feature-strip ul { flex-wrap: wrap; }
+            .hotel-feature-strip li { min-width: calc(50% - 6px); }
+            .process-list { grid-template-columns: repeat(2, 1fr); }
+            .related-services { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 767px) {
+            .preview-header { min-height: 82px; padding: 12px 18px; }
+            .preview-header nav a:not(.signup) { display: none; }
+            .inner-middle-bg { min-height: 110px; }
+            .container { width: min(100% - 24px, 1170px); }
+            .col-sidebar, .col-content { width: 100%; }
+            .rez-service-sidebar { margin-top: 0; }
+            .staticpage h1 { font-size: 28px; }
+            .hotel-feature-strip li { min-width: 100%; }
+            .stats-list,
+            .two-column-boxes,
+            .process-list,
+            .related-services,
+            .quick-contact-form,
+            .preview-footer {
+                grid-template-columns: 1fr;
+            }
+            .quick-contact-l { border-right: 0; border-bottom: 1px solid var(--rez-purple); }
+            .preview-prefooter { flex-direction: column; }
+        }
+    
+
+        /* Cruise-page extensions using the same purple/orange card system */
+        .booking-mode-label {
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 4px 9px;
+            border-radius: 999px;
+            color: #fff;
+            background: var(--rez-purple);
+            font-size: 12px;
+            line-height: 1;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+        .booking-mode-label.assisted { background: var(--rez-orange); color: #251251; }
+        .cruise-line-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 16px;
+        }
+        .cruise-line-card {
+            min-height: 185px;
+            padding: 18px 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 1px 3px 11px rgba(0,0,0,.10);
+        }
+        .cruise-line-card h3 {
+            margin: 0 0 8px;
+            color: var(--rez-purple);
+            font-size: 18px;
+        }
+        .cruise-line-card p { margin: 0 0 9px; }
+        .cruise-line-card p:last-child { margin-bottom: 0; }
+        .availability-note {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-left: 4px solid var(--rez-orange);
+            background: #fff8ed;
+            color: #3c2a13;
+            font-size: 14px;
+        }
+        .query-checklist {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 11px 18px;
+            margin: 14px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .query-checklist li {
+            position: relative;
+            padding: 11px 12px 11px 34px;
+            border: 1px solid #e3e3e3;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .query-checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 12px;
+            top: 10px;
+            color: var(--rez-blue);
+            font-weight: 900;
+        }
+        .prototype-disabled {
+            opacity: .55;
+            cursor: not-allowed;
+        }
+        .prototype-ribbon {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 2px 7px;
+            border-radius: 3px;
+            color: #fff;
+            background: #9a7400;
+            font-size: 10px;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+        @media (max-width: 767px) {
+            .cruise-line-grid,
+            .query-checklist { grid-template-columns: 1fr; }
+        }
+</style>
+<script src="https://cdn.rezlive.com/rezlive7/static/js/jquery.min.js"></script>
+<script>
+        /* The preview keeps its embedded header/footer on GitHub Pages.
+           On rezlive.com the existing shared includes are loaded. */
+        $(function () {
+            if (window.location.hostname === 'rezlive.com' || window.location.hostname.endsWith('.rezlive.com')) {
+                $(".header").load("rez7_header.html");
+                $("#footerabove").load("rez7_footer_above.html");
+                $("#footer").load("rez7_footer.html");
+            }
+        });
+    </script>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://www.rezlive.com/b2b-hotel-booking-platform#webpage",
+          "url": "https://www.rezlive.com/b2b-hotel-booking-platform",
+          "name": "B2B Hotel Booking Portal for Travel Agents",
+          "description": "RezLive B2B hotel booking platform for travel agents, OTAs, DMCs, tour operators and other travel businesses."
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://www.rezlive.com/b2b-hotel-booking-platform#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://www.rezlive.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Travel Services",
+              "item": "https://www.rezlive.com/travel-services"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Hotels",
+              "item": "https://www.rezlive.com/b2b-hotel-booking-platform"
+            }
+          ]
+        },
+        {
+          "@type": "Service",
+          "@id": "https://www.rezlive.com/b2b-hotel-booking-platform#service",
+          "name": "RezLive B2B Hotel Booking Platform",
+          "serviceType": "B2B hotel reservation platform",
+          "provider": {
+            "@type": "Organization",
+            "name": "RezLive.com",
+            "url": "https://www.rezlive.com/"
+          },
+          "audience": {
+            "@type": "BusinessAudience",
+            "audienceType": "Travel agents, OTAs, DMCs, tour operators, wholesalers and corporate travel businesses"
+          },
+          "areaServed": "Worldwide"
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://www.rezlive.com/b2b-hotel-booking-platform#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is a B2B hotel booking portal?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A B2B hotel booking portal is a reservation platform created for travel businesses. It enables approved travel professionals to search hotel inventory, check trade rates and book accommodation for their customers."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who can use RezLive's hotel booking platform?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "RezLive is intended for travel professionals including travel agents, online travel agencies, destination management companies, tour operators, wholesalers and corporate travel businesses."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can RezLive hotel content be connected through an API?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Eligible travel businesses can explore RezLive and RezTez XML or JSON API connectivity to access hotel content through their own website or reservation system."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Does RezLive provide real-time hotel availability?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "RezLive provides real-time availability and booking confirmation information, subject to the selected hotel's rate and booking conditions."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
+</head>
+<body class="inner-pages">
+<div class="main-container" id="main-container">
+<div class="inner-container" id="inner-container">
+<header class="header" id="header">
+<div class="preview-header">
+<a aria-label="RezLive home" href="https://www.rezlive.com/">
+<img alt="RezLive.com" class="logo" src="assets/rezlive-logo.png"/>
+</a>
+<nav aria-label="Primary navigation">
+<a href="https://www.rezlive.com/">Home</a>
+<a href="https://www.rezlive.com/staticpagesrezlive/aboutus.html">About Us</a>
+<a href="https://www.rezlive.com/staticpagesrezlive/xml-connect.html" style="color:#f99f25;">XML/API</a>
+<a href="https://www.rezlive.com/staticpagesrezlive/accolades.html">Accolades</a>
+<a href="https://www.rezlive.com/staticpagesrezlive/reach-us.html">Reach Us</a>
+<a class="signup" href="https://www.rezlive.com/common/index/action/agentregistration">Sign Up</a>
+<a href="#">English ▾</a>
+</nav>
+</div>
+</header>
+<main id="middle">
+<div aria-label="RezLive global travel destinations" class="inner-middle-bg inner-aboutus-middle-bg" role="img"></div>
+<section class="common-section">
+<div class="container">
+<div class="row">
+<aside aria-label="RezLive services" class="col-sidebar">
+<!-- Put this navigation directly in HTML so search engines can crawl all six service links -->
+<nav class="rez-service-sidebar">
+<h2>RezLive Services</h2>
+<ul>
+<li><a aria-current="page" class="active" href="./rezlive-b2b-hotel-booking-platform.html">Hotels</a></li>
+<li><a aria-disabled="true" class="prototype-disabled" href="#" title="This service page is not included in the current prototype.">Sightseeing</a></li>
+<li><a aria-disabled="true" class="prototype-disabled" href="#" title="This service page is not included in the current prototype.">Transfers</a></li>
+<li><a aria-disabled="true" class="prototype-disabled" href="#" title="This service page is not included in the current prototype.">Rail</a></li>
+<li><a class="" href="./rezlive-b2b-cruise-booking-platform.html">Cruise</a></li>
+<li><a aria-disabled="true" class="prototype-disabled" href="#" title="This service page is not included in the current prototype.">Car Rental</a></li>
+<li><a class="" href="https://www.rezlive.com/staticpagesrezlive/xml-connect.html">XML/API Integration</a></li>
+</ul>
+</nav>
+<div class="sidebar-mini-cta">
+<p><strong>Are you a travel professional?</strong><br/>Register your business to access RezLive services.</p>
+<a href="/common/index/action/agentregistration">Register Now</a>
+</div>
+</aside>
+<div class="col-content">
+<article class="staticpage">
+<p class="page-kicker">RezLive Hotels<span class="prototype-ribbon">Manager Prototype</span></p>
+<h1>B2B Hotel Booking Platform for Travel Agents</h1>
+<p class="intro">
+                                    Access global hotel and apartment inventory through RezLive's B2B hotel booking portal for travel agents, OTAs, DMCs, tour operators, wholesalers and corporate travel businesses.
+                                </p>
+<div aria-label="Hotel platform highlights" class="hotel-feature-strip">
+<ul>
+<li><span class="feature-icon">◷</span> Real-Time Availability</li>
+<li><span class="feature-icon">▦</span> Global Hotel Content</li>
+<li><span class="feature-icon">◇</span> Competitive B2B Rates</li>
+</ul>
+</div>
+<div class="content-copy">
+<p>
+                                        RezLive helps approved travel businesses search, compare and book hotels for leisure, corporate, group and customised travel requirements. The platform combines directly contracted properties with connected global hotel supply so agents can find suitable accommodation across different destinations, budgets and property categories.
+                                    </p>
+</div>
+<section class="rez-content-card" id="what-is-rezlive-hotels">
+<h2>What is RezLive's B2B Hotel Booking Portal?</h2>
+<p>
+<strong>RezLive is a business-to-business hotel reservation platform</strong> designed for tourism professionals rather than direct consumers. Travel partners can access global hotel content, review availability and booking conditions, compare trade-focused rates and confirm accommodation for their customers.
+                                    </p>
+<p>
+                                        This clear answer is intentionally placed near the top of the page for SEO, featured snippets, voice search and AI-generated answers.
+                                    </p>
+</section>
+<section class="rez-content-card" id="hotel-booking-benefits">
+<h2>Why Travel Businesses Choose RezLive for Hotel Bookings</h2>
+<ul class="tick-list">
+<li><strong>Real-time availability and booking confirmations</strong> for eligible hotel inventory.</li>
+<li><strong>500,000+ hotel and apartment rooms</strong> across worldwide destinations.</li>
+<li><strong>Directly contracted and connected hotel supply</strong> across independent hotels, chains, resorts, boutique properties, hostels and apartments.</li>
+<li><strong>Booking tools for travel agents</strong>, including Autovoucher, booking notes and transparent rate information.</li>
+<li><strong>RezVault digital wallet support</strong> for eligible payments and refunds.</li>
+<li><strong>API connectivity</strong> for eligible OTAs, DMCs and travel technology businesses.</li>
+<li><strong>Global service support</strong> for booking and post-booking requirements.</li>
+</ul>
+</section>
+<div aria-label="RezLive hotel platform figures" class="stats-list">
+<div class="stat-row">
+<div class="stat-icon">⌂</div>
+<div class="stat-text">500,000+ Hotels &amp; Apartments Worldwide</div>
+</div>
+<div class="stat-row">
+<div class="stat-icon">✓</div>
+<div class="stat-text">22,000+ Directly Contracted Hotels</div>
+</div>
+<div class="stat-row">
+<div class="stat-icon">◎</div>
+<div class="stat-text">40,000+ Travel Partners</div>
+</div>
+<div class="stat-row">
+<div class="stat-icon">☎</div>
+<div class="stat-text">24/7 Service Support</div>
+</div>
+</div>
+<section class="rez-content-card" id="who-can-use-rezlive">
+<h2>Who Can Use the RezLive Hotel Platform?</h2>
+<div class="two-column-boxes">
+<div class="mini-box">
+<h3>Travel Agents</h3>
+<p>Book accommodation for leisure, corporate, family, group and customised customer enquiries.</p>
+</div>
+<div class="mini-box">
+<h3>Online Travel Agencies</h3>
+<p>Use the RezLive platform or explore XML/JSON connectivity for your own booking website.</p>
+</div>
+<div class="mini-box">
+<h3>DMCs and Tour Operators</h3>
+<p>Combine hotels with transfers, sightseeing and other services for complete itineraries.</p>
+</div>
+<div class="mini-box">
+<h3>Wholesalers and Corporate Travel Businesses</h3>
+<p>Source global accommodation for distribution, managed travel and repeat business requirements.</p>
+</div>
+</div>
+</section>
+<section class="rez-content-card" id="hotel-inventory">
+<h2>Global Hotel Inventory for Different Travel Requirements</h2>
+<p>
+                                        RezLive's accommodation selection includes international and local hotel chains, independent hotels, resorts, boutique properties, hostels and apartments. This variety helps travel agents serve luxury, mid-market, budget, family, group, corporate and longer-stay enquiries from one B2B platform.
+                                    </p>
+<h3>Hotel content may include:</h3>
+<ul class="tick-list">
+<li>Room and occupancy information.</li>
+<li>Meal-plan and inclusion details.</li>
+<li>Cancellation and booking conditions.</li>
+<li>Property descriptions and location information.</li>
+<li>Available rates and confirmation status.</li>
+</ul>
+</section>
+<section class="rez-content-card" id="how-it-works">
+<h2>How Hotel Booking Works on RezLive</h2>
+<div class="process-list">
+<div class="process-item">
+<h3>Register</h3>
+<p>Submit your travel business information for verification and account approval.</p>
+</div>
+<div class="process-item">
+<h3>Search</h3>
+<p>Enter destination, dates, rooms and guest details to view hotel options.</p>
+</div>
+<div class="process-item">
+<h3>Compare</h3>
+<p>Review room details, rates, inclusions and cancellation conditions.</p>
+</div>
+<div class="process-item">
+<h3>Book</h3>
+<p>Confirm the selected hotel and manage the reservation through your account.</p>
+</div>
+</div>
+</section>
+<section class="rez-content-card" id="hotel-api">
+<h2>Hotel API Integration for OTAs and Travel Technology Companies</h2>
+<p>
+                                        Eligible online travel agencies, DMCs and travel technology companies can explore RezLive or RezTez XML/JSON integration to access hotel content through their own reservation system, website or application.
+                                    </p>
+<p>
+<a href="/staticpagesrezlive/xml-connect.html"><strong>Learn more about XML/API integration →</strong></a>
+</p>
+</section>
+<section class="rez-content-card" id="other-rezlive-services">
+<h2>Explore Other RezLive Travel Services</h2>
+<p>Build complete customer itineraries by connecting hotel bookings with other RezLive services.</p>
+<div class="related-services">
+<a class="prototype-disabled" href="#" title="This service page is not included in the current prototype.">Sightseeing &amp; Activities</a>
+<a class="prototype-disabled" href="#" title="This service page is not included in the current prototype.">Transfers</a>
+<a class="prototype-disabled" href="#" title="This service page is not included in the current prototype.">Rail</a>
+<a href="./rezlive-b2b-cruise-booking-platform.html">Cruise</a>
+<a class="prototype-disabled" href="#" title="This service page is not included in the current prototype.">Car Rental</a>
+<a href="https://www.rezlive.com/staticpagesrezlive/xml-connect.html">XML/API</a>
+</div>
+</section>
+<section class="rez-content-card" id="faq">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-list">
+<div class="faq-item">
+<h3>What is a B2B hotel booking portal?</h3>
+<p>A B2B hotel booking portal is a reservation platform created for travel businesses. It allows approved travel professionals to search hotel inventory, check trade rates and book accommodation for their customers.</p>
+</div>
+<div class="faq-item">
+<h3>Who can use RezLive's hotel booking platform?</h3>
+<p>RezLive is designed for travel agents, OTAs, DMCs, tour operators, wholesalers and corporate travel businesses, subject to registration and approval.</p>
+</div>
+<div class="faq-item">
+<h3>Does RezLive provide real-time hotel availability?</h3>
+<p>RezLive provides real-time availability and booking confirmation information, subject to the selected hotel's rate and booking conditions.</p>
+</div>
+<div class="faq-item">
+<h3>Can RezLive hotel inventory be connected through an API?</h3>
+<p>Eligible travel businesses can explore RezLive and RezTez XML or JSON API connectivity for their own website, application or reservation platform.</p>
+</div>
+</div>
+</section>
+<form action="../mandrillmailsend.php" class="staticform" id="hotelconnect" method="post" name="hotelconnect">
+<div class="quick-contact-blk hotel-connect-form">
+<div class="quick-contact-hd">
+<span aria-hidden="true" class="phone-icon">☎</span>
+                                            Connect with us to know more
+                                        </div>
+<div class="quick-contact-form">
+<div class="quick-contact-l">
+<ul>
+<li>
+<label for="agencyname">Company Name <span class="allstarcolor">*</span></label>
+<input autocomplete="organization" id="agencyname" name="agencyname" placeholder="Enter Company Name" required="" type="text"/>
+</li>
+<li>
+<label for="personname">Contact Person <span class="allstarcolor">*</span></label>
+<input autocomplete="name" id="personname" name="personname" placeholder="Enter Your Name" required="" type="text"/>
+</li>
+<li>
+<label for="mobile">Telephone <span class="allstarcolor">*</span></label>
+<input autocomplete="tel" id="mobile" name="mobile" placeholder="Enter Your Telephone Number" required="" type="tel"/>
+</li>
+<li>
+<label for="website">Website</label>
+<input autocomplete="url" id="website" name="website" placeholder="Enter Your Website" type="url"/>
+</li>
+</ul>
+</div>
+<div class="quick-contact-r">
+<ul>
+<li>
+<label for="email">Email ID <span class="allstarcolor">*</span></label>
+<input autocomplete="email" id="email" name="email" placeholder="Enter Your Email ID" required="" type="email"/>
+</li>
+<li>
+<label for="countryId">Country <span class="allstarcolor">*</span></label>
+<select id="countryId" name="country" required="">
+<option value="">Select Country</option>
+</select>
+</li>
+<li>
+<label for="businessType">Business Type <span class="allstarcolor">*</span></label>
+<select id="businessType" name="business_type" required="">
+<option value="">Select Business Type</option>
+<option value="travel-agent">Travel Agent</option>
+<option value="ota">Online Travel Agency</option>
+<option value="dmc">Destination Management Company</option>
+<option value="tour-operator">Tour Operator</option>
+<option value="wholesaler">Travel Wholesaler</option>
+<option value="corporate-travel">Corporate Travel Business</option>
+</select>
+</li>
+<li>
+<label for="requirements">Requirements</label>
+<textarea id="requirements" name="comments" placeholder="Tell us about your hotel booking or API requirements"></textarea>
+</li>
+<li class="disclaimer">
+<strong>Disclaimer:</strong> This form should not be used for cards, refunds or dispute-related communication. For disputes, write to
+                                                        <a href="mailto:dispute@rezlive.com"><u>dispute@rezlive.com</u></a>.
+                                                    </li>
+<li>
+<!-- Replace this preview block with the existing production reCAPTCHA -->
+<div aria-label="reCAPTCHA placeholder" class="recaptcha-placeholder">
+<span class="recaptcha-box"></span>
+<span>I'm not a robot<br/><small>reCAPTCHA verification</small></span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="quick-contact-btn">
+<button type="submit">Submit</button>
+<input type="reset" value="Reset"/>
+</div>
+</div>
+</form>
+<p class="seo-note">
+                                    Publishing note: keep the visible FAQ copy aligned with FAQ schema, include this URL in the XML sitemap, and use server-rendered navigation links rather than JavaScript-only links.
+                                </p>
+</article>
+</div>
+</div>
+</div>
+</section>
+<section class="footer-getstarted" id="footerabove">
+<div class="preview-prefooter">
+<div>
+<h3>Our Other Products</h3>
+<p><strong style="color:#f99f25;">REZ</strong><strong style="color:#2c99c1;">TEZ</strong>   |   Designer Voyages   |   Designer Packages</p>
+</div>
+<div>
+<h3>Accreditation and Affiliation</h3>
+<p>PATA   IATA   Incredible India   OTOAI</p>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="preview-footer">
+<div>
+<img alt="RezLive.com" src="assets/rezlive-footer-logo.png" style="width:170px;"/>
+<p>An Award Winning Global Reservation System<br/>By <strong style="color:#f99f25;">Travel Designer Group</strong></p>
+</div>
+<div>
+<ul>
+<li><a href="/">Home</a></li>
+<li><a href="/staticpagesrezlive/aboutus.html">About Us</a></li>
+<li><a href="/staticpagesrezlive/reach-us.html">Reach Us</a></li>
+<li><a href="/staticpagesrezlive/faq.html">FAQs</a></li>
+<li><a href="/staticpagesrezlive/careers.html">Careers</a></li>
+<li><a href="/staticpagesrezlive/smart-match.html">Smart Match</a></li>
+</ul>
+</div>
+<div>
+<h2>Stay in touch!</h2>
+<p>Subscribe to our newsletter and receive our latest updates.</p>
+<input class="newsletter" placeholder="Enter your email id" type="email"/>
+<button class="subscribe" type="button">Subscribe Now</button>
+</div>
+</div>
+</footer>
+</div>
+</div>
+<script>
+    // Existing country/city AJAX and validation scripts can be retained from the current RezLive form.
+</script>
+</body>
+</html>
