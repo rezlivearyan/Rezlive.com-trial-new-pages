@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>B2B Transfer Booking Portal for Travel Agents | RezLive</title>
+<meta content="Book 5,000+ private and shared transfer options across 900+ airport and city locations with RezLive's B2B transfer platform for travel agents." name="description"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="noindex, nofollow" name="robots"/>
+<meta content="website" property="og:type"/>
+<meta content="B2B Transfer Booking Portal for Travel Agents | RezLive" property="og:title"/>
+<meta content="Book 5,000+ private and shared transfer options across 900+ airport and city locations with RezLive's B2B transfer platform for travel agents." property="og:description"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<!-- Keep RezLive's existing production CSS -->
+<link href="https://cdn.rezlive.com/rezlive7/static/css/bootstrap/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://cdn.rezlive.com/rezlive7/static/css/font-awesome/all.css" rel="stylesheet"/>
+<link href="https://cdn.rezlive.com/rezlive7/static/css/style-new.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.rezlive.com/rezlive7/static/css/media.css" rel="stylesheet" type="text/css"/>
+<!-- This page CSS extends the present RezLive visual system instead of replacing it -->
+<style>
+        :root {
+            --rez-purple: #321582;
+            --rez-purple-dark: #24106d;
+            --rez-orange: #f99f25;
+            --rez-blue: #2c99c1;
+            --rez-border: #321582;
+            --rez-text: #171717;
+            --rez-muted: #555;
+            --rez-soft: #f8f8fb;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            margin: 0;
+            color: var(--rez-text);
+            background: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.58;
+        }
+        a { color: var(--rez-purple); text-decoration: none; }
+        a:hover { color: var(--rez-orange); text-decoration: none; }
+        img { max-width: 100%; height: auto; }
+        .clear, .clearfix { clear: both; }
+
+        /* Fallback header is visible only in the standalone preview.
+           On RezLive, the existing rez7_header.html will replace it. */
+        .preview-header {
+            min-height: 109px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 18px 4%;
+            background: #fff;
+        }
+        .preview-header .logo { width: 175px; }
+        .preview-header nav { display: flex; align-items: center; gap: 34px; font-size: 14px; }
+        .preview-header .signup {
+            padding: 9px 21px;
+            color: #fff;
+            background: var(--rez-purple);
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        /* Same inner-banner placement as the current RezLive static pages */
+        .inner-middle-bg {
+            min-height: 178px;
+            background:
+                linear-gradient(rgba(49,20,130,.04), rgba(49,20,130,.04)),
+                url("assets/rezlive-inner-banner.png") center bottom / cover no-repeat,
+                linear-gradient(90deg, #311483, #4b119d);
+        }
+
+        .common-section { padding: 17px 0 55px; }
+        .container {
+            width: min(1170px, calc(100% - 40px));
+            margin: 0 auto;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -12px;
+        }
+        .col-sidebar, .col-content {
+            padding: 0 12px;
+        }
+        .col-sidebar { width: 24%; }
+        .col-content { width: 76%; }
+
+        /* Same narrow outlined left navigation style as screenshot */
+        .rez-service-sidebar {
+            border: 1px solid var(--rez-border);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #fff;
+            margin-bottom: 20px;
+        }
+        .rez-service-sidebar h2 {
+            margin: 0;
+            padding: 14px 22px 10px;
+            color: var(--rez-purple);
+            font-size: 17px;
+            font-weight: 700;
+        }
+        .rez-service-sidebar ul {
+            list-style: none;
+            margin: 0;
+            padding: 7px 0 14px;
+        }
+        .rez-service-sidebar li { margin: 0; }
+        .rez-service-sidebar a {
+            display: block;
+            padding: 8px 22px;
+            color: var(--rez-purple);
+            font-size: 15px;
+            line-height: 1.35;
+            border-left: 4px solid transparent;
+        }
+        .rez-service-sidebar a:hover {
+            color: var(--rez-orange);
+            background: #faf8ff;
+        }
+        .rez-service-sidebar a.active {
+            color: #fff;
+            background: var(--rez-purple);
+            border-left-color: var(--rez-orange);
+            font-weight: 700;
+        }
+
+        .sidebar-mini-cta {
+            margin-top: 15px;
+            padding: 17px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 0 3px 12px rgba(0,0,0,.08);
+        }
+        .sidebar-mini-cta p { margin: 0 0 12px; font-size: 14px; }
+        .sidebar-mini-cta a {
+            display: block;
+            padding: 10px 12px;
+            color: #fff;
+            background: var(--rez-orange);
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .staticpage { width: 100%; }
+        .page-kicker {
+            margin: 0 0 3px;
+            color: var(--rez-orange);
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+        }
+        .staticpage h1 {
+            margin: 0 0 8px;
+            color: var(--rez-purple);
+            font-size: 34px;
+            line-height: 1.18;
+            font-weight: 800;
+        }
+        .staticpage .intro {
+            margin: 0 0 19px;
+            color: #222;
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        /* Matches the three purple feature tiles in the supplied UI */
+        .hotel-feature-strip ul {
+            display: flex;
+            gap: 12px;
+            list-style: none;
+            padding: 0;
+            margin: 21px 0 19px;
+        }
+        .hotel-feature-strip li {
+            flex: 1 1 0;
+            min-height: 67px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            padding: 12px 15px;
+            color: #fff;
+            background: var(--rez-purple);
+            border-radius: 6px;
+            box-shadow: 2px 5px 12px rgba(0,0,0,.25);
+            text-align: center;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 15px;
+        }
+        .hotel-feature-strip .feature-icon {
+            font-size: 21px;
+            line-height: 1;
+        }
+
+        .content-copy {
+            color: #161616;
+            font-size: 16px;
+            line-height: 1.62;
+        }
+
+        /* Same white cards and soft shadow language as current page */
+        .rez-content-card {
+            margin: 22px 0;
+            padding: 19px 27px 23px;
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 2px 4px 16px rgba(0,0,0,.18);
+        }
+        .rez-content-card h2 {
+            margin: 0 0 14px;
+            color: #a00000;
+            font-size: 19px;
+            font-weight: 500;
+        }
+        .rez-content-card h3 {
+            margin: 18px 0 7px;
+            color: var(--rez-purple);
+            font-size: 18px;
+        }
+        .rez-content-card p { margin: 0 0 12px; }
+        .rez-content-card p:last-child { margin-bottom: 0; }
+
+        .tick-list {
+            list-style: none;
+            margin: 11px 0 0;
+            padding: 0;
+        }
+        .tick-list li {
+            position: relative;
+            margin: 0 0 12px;
+            padding-left: 28px;
+        }
+        .tick-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--rez-blue);
+            font-weight: 900;
+            font-size: 18px;
+        }
+
+        .stats-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 13px;
+            margin: 20px 0;
+        }
+        .stat-row {
+            display: flex;
+            align-items: center;
+            min-height: 68px;
+            border: 1px solid #e3e3e3;
+            border-radius: 6px;
+            background: #fff;
+            overflow: hidden;
+        }
+        .stat-icon {
+            width: 72px;
+            align-self: stretch;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background: var(--rez-orange);
+            font-size: 24px;
+            border-radius: 6px 15px 15px 6px;
+        }
+        .stat-text {
+            padding: 10px 14px;
+            color: #1c1c1c;
+            font-size: 15px;
+            font-weight: 700;
+        }
+
+        .two-column-boxes {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 17px;
+            margin: 20px 0;
+        }
+        .mini-box {
+            min-height: 165px;
+            padding: 18px 20px;
+            border: 1px solid #e1e1e1;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 1px 3px 11px rgba(0,0,0,.1);
+        }
+        .mini-box h3 {
+            margin: 0 0 7px;
+            color: var(--rez-purple);
+            font-size: 18px;
+        }
+        .mini-box p { margin: 0; color: #333; }
+
+        .process-list {
+            counter-reset: step;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .process-item {
+            min-height: 150px;
+            padding: 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+        }
+        .process-item:before {
+            counter-increment: step;
+            content: counter(step);
+            display: inline-flex;
+            width: 31px;
+            height: 31px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            color: #fff;
+            background: var(--orange, #f99f25);
+            border-radius: 50%;
+            font-weight: 800;
+        }
+        .process-item h3 {
+            margin: 0 0 5px;
+            color: var(--rez-purple);
+            font-size: 17px;
+        }
+        .process-item p { margin: 0; font-size: 14px; }
+
+        .related-services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 15px;
+        }
+        .related-services a {
+            display: block;
+            padding: 14px 16px;
+            color: var(--rez-purple);
+            background: #fff;
+            border: 1px solid var(--rez-purple);
+            border-radius: 5px;
+            font-weight: 700;
+        }
+        .related-services a:hover {
+            color: #fff;
+            background: var(--rez-purple);
+        }
+
+        .faq-list { margin-top: 14px; }
+        .faq-item {
+            margin-bottom: 10px;
+            padding: 15px 18px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .faq-item h3 {
+            margin: 0 0 5px;
+            color: var(--rez-purple);
+            font-size: 17px;
+        }
+        .faq-item p { margin: 0; }
+
+        /* Form intentionally mirrors the current two-column contact block */
+        .quick-contact-blk {
+            margin-top: 26px;
+            background: #fff;
+            border-radius: 7px;
+            box-shadow: 2px 3px 17px rgba(0,0,0,.22);
+            overflow: hidden;
+        }
+        .quick-contact-hd {
+            padding: 9px 15px;
+            color: var(--rez-purple);
+            border-bottom: 1px solid var(--rez-purple);
+            font-size: 19px;
+            font-weight: 800;
+        }
+        .quick-contact-hd .phone-icon {
+            display: inline-block;
+            margin-right: 9px;
+            font-size: 25px;
+            vertical-align: middle;
+        }
+        .quick-contact-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .quick-contact-l, .quick-contact-r {
+            padding: 14px 16px 24px;
+        }
+        .quick-contact-l { border-right: 1px solid var(--rez-purple); }
+        .quick-contact-form ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .quick-contact-form li { margin-bottom: 14px; }
+        .quick-contact-form label {
+            display: block;
+            margin-bottom: 3px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .allstarcolor { color: red; }
+        .quick-contact-form input,
+        .quick-contact-form select,
+        .quick-contact-form textarea {
+            width: 100%;
+            min-height: 33px;
+            padding: 6px 0;
+            color: #222;
+            background: #fff;
+            border: 0;
+            border-bottom: 1px solid var(--rez-purple);
+            border-radius: 0;
+            outline: none;
+            font: inherit;
+            font-size: 14px;
+        }
+        .quick-contact-form textarea {
+            min-height: 70px;
+            resize: vertical;
+        }
+        .quick-contact-form input:focus,
+        .quick-contact-form select:focus,
+        .quick-contact-form textarea:focus {
+            border-bottom-color: var(--rez-orange);
+        }
+        .disclaimer {
+            margin: 7px 0 16px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .recaptcha-placeholder {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            color: #555;
+            background: #fafafa;
+            font-size: 12px;
+        }
+        .recaptcha-box {
+            width: 23px;
+            height: 23px;
+            border: 1px solid #777;
+            background: #fff;
+        }
+        .quick-contact-btn {
+            padding: 28px 17px 25px;
+            border-top: 1px solid var(--rez-purple);
+            text-align: right;
+        }
+        .quick-contact-btn input,
+        .quick-contact-btn button {
+            min-width: 88px;
+            margin-left: 9px;
+            padding: 11px 17px;
+            color: #fff;
+            background: var(--rez-purple);
+            border: 0;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+        .quick-contact-btn input:hover,
+        .quick-contact-btn button:hover {
+            background: var(--rez-orange);
+        }
+
+        /* Preview-only footer approximates the current site;
+           existing footer include replaces it in production. */
+        .preview-prefooter {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            padding: 22px 5%;
+            background: #fff;
+            border-top: 1px solid #eee;
+        }
+        .preview-prefooter > div { flex: 1; }
+        .preview-prefooter h3 { margin: 0 0 9px; font-size: 17px; font-weight: 500; }
+        .preview-footer {
+            display: grid;
+            grid-template-columns: 1.2fr .8fr 1.2fr;
+            gap: 45px;
+            padding: 55px 5% 35px;
+            color: #fff;
+            background: #202078;
+        }
+        .preview-footer h2 {
+            margin: 0 0 5px;
+            color: var(--rez-orange);
+            font-size: 34px;
+        }
+        .preview-footer p, .preview-footer a { color: #fff; }
+        .preview-footer ul { list-style: none; margin: 0; padding: 0; }
+        .preview-footer li { margin-bottom: 9px; }
+        .newsletter {
+            width: 100%;
+            min-height: 42px;
+            padding: 9px 12px;
+            border: 0;
+            border-radius: 5px;
+            background: #11145e;
+            color: #fff;
+        }
+        .subscribe {
+            width: 100%;
+            margin-top: 12px;
+            padding: 12px;
+            color: #fff;
+            background: var(--rez-orange);
+            border: 0;
+            border-radius: 5px;
+            font-size: 17px;
+            font-weight: 700;
+        }
+
+        .seo-note {
+            margin-top: 12px;
+            color: #666;
+            font-size: 12px;
+        }
+
+        @media (max-width: 991px) {
+            .preview-header nav { gap: 16px; }
+            .col-sidebar { width: 30%; }
+            .col-content { width: 70%; }
+            .hotel-feature-strip ul { flex-wrap: wrap; }
+            .hotel-feature-strip li { min-width: calc(50% - 6px); }
+            .process-list { grid-template-columns: repeat(2, 1fr); }
+            .related-services { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 767px) {
+            .preview-header { min-height: 82px; padding: 12px 18px; }
+            .preview-header nav a:not(.signup) { display: none; }
+            .inner-middle-bg { min-height: 110px; }
+            .container { width: min(100% - 24px, 1170px); }
+            .col-sidebar, .col-content { width: 100%; }
+            .rez-service-sidebar { margin-top: 0; }
+            .staticpage h1 { font-size: 28px; }
+            .hotel-feature-strip li { min-width: 100%; }
+            .stats-list,
+            .two-column-boxes,
+            .process-list,
+            .related-services,
+            .quick-contact-form,
+            .preview-footer {
+                grid-template-columns: 1fr;
+            }
+            .quick-contact-l { border-right: 0; border-bottom: 1px solid var(--rez-purple); }
+            .preview-prefooter { flex-direction: column; }
+        }
+    
+
+        /* Cruise-page extensions using the same purple/orange card system */
+        .booking-mode-label {
+            display: inline-block;
+            margin-bottom: 8px;
+            padding: 4px 9px;
+            border-radius: 999px;
+            color: #fff;
+            background: var(--rez-purple);
+            font-size: 12px;
+            line-height: 1;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }
+        .booking-mode-label.assisted { background: var(--rez-orange); color: #251251; }
+        .cruise-line-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 16px;
+        }
+        .cruise-line-card {
+            min-height: 185px;
+            padding: 18px 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 1px 3px 11px rgba(0,0,0,.10);
+        }
+        .cruise-line-card h3 {
+            margin: 0 0 8px;
+            color: var(--rez-purple);
+            font-size: 18px;
+        }
+        .cruise-line-card p { margin: 0 0 9px; }
+        .cruise-line-card p:last-child { margin-bottom: 0; }
+        .availability-note {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-left: 4px solid var(--rez-orange);
+            background: #fff8ed;
+            color: #3c2a13;
+            font-size: 14px;
+        }
+        .query-checklist {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 11px 18px;
+            margin: 14px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .query-checklist li {
+            position: relative;
+            padding: 11px 12px 11px 34px;
+            border: 1px solid #e3e3e3;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .query-checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 12px;
+            top: 10px;
+            color: var(--rez-blue);
+            font-weight: 900;
+        }
+        .prototype-disabled {
+            opacity: .55;
+            cursor: not-allowed;
+        }
+        .prototype-ribbon {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 2px 7px;
+            border-radius: 3px;
+            color: #fff;
+            background: #9a7400;
+            font-size: 10px;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+        @media (max-width: 767px) {
+            .cruise-line-grid,
+            .query-checklist { grid-template-columns: 1fr; }
+        }
+
+
+        /* Sightseeing-page extensions using the same purple/orange card system */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 16px;
+        }
+        .experience-card {
+            min-height: 166px;
+            padding: 18px 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 1px 3px 11px rgba(0,0,0,.10);
+        }
+        .experience-card .experience-icon {
+            display: inline-flex;
+            width: 36px;
+            height: 36px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 9px;
+            border-radius: 50%;
+            color: #fff;
+            background: var(--rez-orange);
+            font-size: 18px;
+        }
+        .experience-card h3 {
+            margin: 0 0 7px;
+            color: var(--rez-purple);
+            font-size: 18px;
+        }
+        .experience-card p { margin: 0; color: #333; }
+        .inventory-note {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-left: 4px solid var(--rez-orange);
+            background: #fff8ed;
+            color: #3c2a13;
+            font-size: 14px;
+        }
+        .booking-checklist {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 11px 18px;
+            margin: 14px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .booking-checklist li {
+            position: relative;
+            padding: 11px 12px 11px 34px;
+            border: 1px solid #e3e3e3;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .booking-checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 12px;
+            top: 10px;
+            color: var(--rez-blue);
+            font-weight: 900;
+        }
+        @media (max-width: 767px) {
+            .experience-grid,
+            .booking-checklist { grid-template-columns: 1fr; }
+        }
+
+
+        /* Transfer-page extensions using the same RezLive card system */
+        .route-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 16px;
+        }
+        .route-card {
+            min-height: 164px;
+            padding: 18px 20px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: #fff;
+            box-shadow: 1px 3px 11px rgba(0,0,0,.10);
+        }
+        .route-card .route-icon {
+            display: inline-flex;
+            width: 38px;
+            height: 38px;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 9px;
+            border-radius: 50%;
+            color: #fff;
+            background: var(--rez-orange);
+            font-size: 18px;
+            font-weight: 800;
+        }
+        .route-card h3 {
+            margin: 0 0 7px;
+            color: var(--rez-purple);
+            font-size: 18px;
+        }
+        .route-card p {
+            margin: 0;
+            color: #333;
+        }
+        .coverage-note {
+            margin-top: 14px;
+            padding: 12px 14px;
+            border-left: 4px solid var(--rez-orange);
+            background: #fff8ed;
+            color: #3c2a13;
+            font-size: 14px;
+        }
+        .transfer-checklist {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 11px 18px;
+            margin: 14px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        .transfer-checklist li {
+            position: relative;
+            padding: 11px 12px 11px 34px;
+            border: 1px solid #e3e3e3;
+            border-radius: 5px;
+            background: #fff;
+        }
+        .transfer-checklist li:before {
+            content: "✓";
+            position: absolute;
+            left: 12px;
+            top: 10px;
+            color: var(--rez-blue);
+            font-weight: 900;
+        }
+        .transfer-definition {
+            margin-top: 14px;
+            padding: 15px 17px;
+            border: 1px solid #ddd5f3;
+            border-radius: 6px;
+            background: #faf8ff;
+        }
+        .transfer-definition strong {
+            color: var(--rez-purple);
+        }
+        @media (max-width: 767px) {
+            .route-grid,
+            .transfer-checklist {
+                grid-template-columns: 1fr;
+            }
+        }
+</style>
+<script src="https://cdn.rezlive.com/rezlive7/static/js/jquery.min.js"></script>
+<script>
+        /* The preview keeps its embedded header/footer on GitHub Pages.
+           On rezlive.com the existing shared includes are loaded. */
+        $(function () {
+            if (window.location.hostname === 'rezlive.com' || window.location.hostname.endsWith('.rezlive.com')) {
+                $(".header").load("rez7_header.html");
+                $("#footerabove").load("rez7_footer_above.html");
+                $("#footer").load("rez7_footer.html");
+            }
+        });
+    </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.rezlive.com/b2b-transfer-booking-platform#webpage",
+      "url": "https://www.rezlive.com/b2b-transfer-booking-platform",
+      "name": "B2B Transfer Booking Portal for Travel Agents",
+      "description": "RezLive B2B private and shared ground transfer booking platform for travel agents, OTAs, DMCs and tour operators.",
+      "breadcrumb": {
+        "@id": "https://www.rezlive.com/b2b-transfer-booking-platform#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://www.rezlive.com/b2b-transfer-booking-platform#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.rezlive.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Travel Services",
+          "item": "https://www.rezlive.com/travel-services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Transfers",
+          "item": "https://www.rezlive.com/b2b-transfer-booking-platform"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://www.rezlive.com/b2b-transfer-booking-platform#service",
+      "name": "RezLive B2B Transfer Booking Platform",
+      "serviceType": "B2B private and shared ground transfer booking service",
+      "provider": {
+        "@type": "Organization",
+        "name": "RezLive.com",
+        "url": "https://www.rezlive.com/"
+      },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Travel agents, OTAs, DMCs, tour operators, wholesalers and corporate travel businesses"
+      },
+      "areaServed": "Worldwide",
+      "url": "https://www.rezlive.com/b2b-transfer-booking-platform"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.rezlive.com/b2b-transfer-booking-platform#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a B2B transfer booking platform?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A B2B transfer booking platform allows approved travel businesses to search and book pre-arranged ground transport for their customers between airports, hotels, city locations and other supported pickup and drop-off points."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much transfer inventory does RezLive offer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RezLive publicly states that its platform offers more than 5,000 transfer options across over 900 airport and city locations. Exact routes and services depend on live supplier availability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can agents book airport-to-hotel and hotel-to-airport transfers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Agents can search supported airport and city transfer routes, including airport-to-hotel and hotel-to-airport requirements, subject to the selected location, date and live availability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does RezLive provide private and shared transfers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RezLive publicly describes its transfer inventory as including private and shared car transfers. The available service type varies by route and supplier."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can RezLive be used for intercity or outstation transfers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Travel agents can search supported city and intercity transfer requirements. Availability should be confirmed for the exact pickup point, destination, date and passenger details."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What information is needed to book a transfer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typical booking information includes pickup and drop-off points, travel date and time, passenger count, luggage details, customer contact information and flight details when an airport is involved."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a transfer voucher?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A transfer voucher is the booking document issued after the applicable payment and confirmation process. It contains the information the traveller may need to use the booked service."
+          }
+        }
+      ]
+    }
+  ]
+}
+    </script>
+</head>
+<body class="inner-pages">
+<div class="main-container" id="main-container">
+<div class="inner-container" id="inner-container">
+<header class="header" id="header">
+<div class="preview-header">
+<a aria-label="RezLive home" href="https://www.rezlive.com/">
+<img alt="RezLive.com" class="logo" src="assets/rezlive-logo.png"/>
+</a>
+<nav aria-label="Primary navigation">
+<a href="https://www.rezlive.com/">Home</a>
+<a href="https://www.rezlive.com/staticpagesrezlive/aboutus.html">About Us</a>
+<a href="https://www.rezlive.com/staticpagesrezlive/xml-connect.html" style="color:#f99f25;">XML/API</a>
+<a href="https://www.rezlive.com/staticpagesrezlive/accolades.html">Accolades</a>
+<a href="https://www.rezlive.com/staticpagesrezlive/reach-us.html">Reach Us</a>
+<a class="signup" href="https://www.rezlive.com/common/index/action/agentregistration">Sign Up</a>
+<a href="#">English ▾</a>
+</nav>
+</div>
+</header>
+<main id="middle">
+<div aria-label="RezLive global travel destinations" class="inner-middle-bg inner-aboutus-middle-bg" role="img"></div>
+<section class="common-section">
+<div class="container">
+<div class="row">
+<aside aria-label="RezLive services" class="col-sidebar">
+<!-- Put this navigation directly in HTML so search engines can crawl all six service links -->
+<nav class="rez-service-sidebar">
+<h2>RezLive Services</h2>
+<ul><li><a href="./rezlive-b2b-hotel-booking-platform.html">Hotels</a></li><li><a href="./rezlive-b2b-sightseeing-booking-platform.html">Sightseeing</a></li><li><a aria-current="page" class="active" href="./rezlive-b2b-transfer-booking-platform.html">Transfers</a></li><li><a href="./rezlive-b2b-rail-booking-platform.html">Rail</a></li><li><a href="./rezlive-b2b-cruise-booking-platform.html">Cruise</a></li><li><a href="./rezlive-b2b-car-rental-platform.html">Car Rental</a></li><li><a href="https://www.rezlive.com/staticpagesrezlive/xml-connect.html">XML/API Integration</a></li></ul>
+</nav>
+<div class="sidebar-mini-cta">
+<p><strong>Are you a travel professional?</strong><br/>Register your business to access RezLive services.</p>
+<a href="https://www.rezlive.com/common/index/action/agentregistration">Register Now</a>
+</div>
+</aside>
+<div class="col-content">
+<article class="staticpage">
+<p class="page-kicker">RezLive Transfers<span class="prototype-ribbon">Manager Prototype</span></p>
+<h1>B2B Transfer Booking Platform for Travel Agents</h1>
+<p class="intro">
+    Book private and shared ground transfers across airport, hotel, city and supported intercity routes through RezLive's B2B transfer booking portal for travel agents, OTAs, DMCs, tour operators, wholesalers and travel businesses.
+  </p>
+<div aria-label="Transfer booking highlights" class="hotel-feature-strip">
+<ul>
+<li><span class="feature-icon">↔</span> 5,000+ Transfer Options</li>
+<li><span class="feature-icon">⌖</span> 900+ Airport &amp; City Locations</li>
+<li><span class="feature-icon">◉</span> Private &amp; Shared Transfers</li>
+</ul>
+</div>
+<div class="content-copy">
+<p>
+      RezLive helps travel professionals add pre-arranged ground transport to complete customer itineraries. Agents can search supported pickup and drop-off routes, compare available transfer options, review the applicable service conditions and provide customers with booking documentation before travel.
+    </p>
+</div>
+<section class="rez-content-card" id="what-is-rezlive-transfer">
+<h2>What Is RezLive's B2B Transfer Booking Platform?</h2>
+<div class="transfer-definition">
+<p>
+<strong>RezLive Transfers is a business-to-business ground transportation booking service</strong> for approved travel professionals. It helps agents arrange customer movement between supported airports, hotels, city locations and intercity destinations instead of leaving travellers to organise transport after arrival.
+      </p>
+</div>
+<p>
+      RezLive publicly states that its platform provides more than 5,000 transfer options across over 900 airport and city locations, including private and shared car transfers. Exact routes, operating hours, vehicle/service categories and confirmation conditions depend on the selected destination, travel date and live supplier inventory.
+    </p>
+</section>
+<section class="rez-content-card" id="transfer-coverage">
+<h2>Global Airport and City Transfer Coverage</h2>
+<div class="stats-list">
+<div class="stat-row">
+<div class="stat-icon">5K+</div>
+<div class="stat-text">Transfer options shown in RezLive's published offering</div>
+</div>
+<div class="stat-row">
+<div class="stat-icon">900+</div>
+<div class="stat-text">Airport and city locations represented in published coverage</div>
+</div>
+<div class="stat-row">
+<div class="stat-icon">2</div>
+<div class="stat-text">Private and shared transfer formats publicly referenced by RezLive</div>
+</div>
+<div class="stat-row">
+<div class="stat-icon">B2B</div>
+<div class="stat-text">Built for approved tourism professionals</div>
+</div>
+</div>
+<div class="coverage-note">
+      For SEO accuracy, the final page should say “5,000+ transfer options across 900+ airport and city locations” rather than “every route worldwide.” Each transfer remains subject to live route, date, capacity and supplier availability.
+    </div>
+</section>
+<section class="rez-content-card" id="transfer-routes">
+<h2>Transfer Routes Travel Agents Can Search</h2>
+<p>
+      The following route categories explain the product clearly for users and search engines. Availability should always be checked for the exact pickup and drop-off points.
+    </p>
+<div class="route-grid">
+<div class="route-card">
+<span class="route-icon">✈</span>
+<h3>Airport to Hotel Transfers</h3>
+<p>Arrange a pre-booked pickup from a supported airport to a hotel, resort or available city drop-off point.</p>
+</div>
+<div class="route-card">
+<span class="route-icon">⌂</span>
+<h3>Hotel to Airport Transfers</h3>
+<p>Book transport from a hotel or supported city location to the airport for the customer's onward journey.</p>
+</div>
+<div class="route-card">
+<span class="route-icon">↔</span>
+<h3>Intercity and Outstation Transfers</h3>
+<p>Search supported transfers between different cities or outer-city destinations for point-to-point travel requirements.</p>
+</div>
+<div class="route-card">
+<span class="route-icon">●</span>
+<h3>City and Hotel Transfers</h3>
+<p>Connect hotels, attractions, business districts and supported city locations where route inventory is available.</p>
+</div>
+<div class="route-card">
+<span class="route-icon">P</span>
+<h3>Private Transfers</h3>
+<p>Suitable for travellers who need a dedicated transfer service for their booking party, subject to available capacity.</p>
+</div>
+<div class="route-card">
+<span class="route-icon">S</span>
+<h3>Shared Transfers</h3>
+<p>A shared service may combine passengers travelling on compatible routes and timings, depending on the supplier.</p>
+</div>
+</div>
+</section>
+<section class="rez-content-card" id="why-agents-use-rezlive-transfers">
+<h2>Why Add Transfers to a Customer Itinerary?</h2>
+<ul class="tick-list">
+<li><strong>Complete the journey:</strong> connect the customer's arrival or departure with their hotel, sightseeing or onward destination.</li>
+<li><strong>Plan before travel:</strong> reduce the need for customers to arrange unfamiliar local transport after they arrive.</li>
+<li><strong>Private and shared options:</strong> compare the service types available for the selected route and budget.</li>
+<li><strong>B2B booking workflow:</strong> manage the service as part of the travel agent's broader RezLive itinerary.</li>
+<li><strong>Clear booking documentation:</strong> provide the applicable transfer voucher, pickup information and supplier instructions.</li>
+<li><strong>Cross-sell travel services:</strong> combine transfers with hotels, sightseeing, cruise and other available RezLive products.</li>
+</ul>
+</section>
+<section class="rez-content-card" id="how-transfer-booking-works">
+<h2>How Transfer Booking Works with RezLive</h2>
+<div class="process-list">
+<div class="process-item">
+<h3>Register or Sign In</h3>
+<p>Use an approved RezLive travel-business account.</p>
+</div>
+<div class="process-item">
+<h3>Enter the Route</h3>
+<p>Select the pickup point, drop-off point, service date and passenger information.</p>
+</div>
+<div class="process-item">
+<h3>Compare Available Options</h3>
+<p>Review the transfer type, pickup instructions, capacity and applicable booking conditions.</p>
+</div>
+<div class="process-item">
+<h3>Book and Share the Voucher</h3>
+<p>Complete the applicable confirmation and payment process, then give the traveller the transfer voucher and instructions.</p>
+</div>
+</div>
+<p style="margin-top:15px;">
+<a href="https://www.rezlive.com/common/index/action/agentregistration"><strong>Register your travel business with RezLive →</strong></a>
+</p>
+</section>
+<section class="rez-content-card" id="booking-information">
+<h2>Information to Check Before Booking a Transfer</h2>
+<p>
+      Accurate travel and contact information is particularly important for airport pickups and time-sensitive departure transfers.
+    </p>
+<ul class="transfer-checklist">
+<li>Exact pickup point and full address</li>
+<li>Exact drop-off point and destination</li>
+<li>Transfer date and required time</li>
+<li>Flight number and arrival or departure schedule</li>
+<li>Passenger count and child ages</li>
+<li>Number and size of luggage pieces</li>
+<li>Lead traveller's working mobile number</li>
+<li>Private or shared service preference</li>
+<li>Meeting-point and driver-contact instructions</li>
+<li>Amendment, cancellation and no-show conditions</li>
+</ul>
+<div class="coverage-note">
+      For airport arrivals, agents should enter the correct flight details. For hotel-to-airport departures, follow the confirmed supplier's displayed pickup time and instructions rather than assuming the traveller's preferred departure time.
+    </div>
+</section>
+<section class="rez-content-card" id="complete-itinerary">
+<h2>Connect Transfers with Other RezLive Services</h2>
+<p>
+      A connected service cluster helps travel partners move from accommodation to destination experiences and ground transport without losing context.
+    </p>
+<div class="related-services">
+<a href="./rezlive-b2b-hotel-booking-platform.html">Hotels</a>
+<a href="./rezlive-b2b-sightseeing-booking-platform.html">Sightseeing</a>
+<a href="./rezlive-b2b-rail-booking-platform.html">Rail</a>
+<a href="./rezlive-b2b-cruise-booking-platform.html">Cruise</a>
+<a href="./rezlive-b2b-car-rental-platform.html">Car Rental</a>
+<a href="https://www.rezlive.com/staticpagesrezlive/xml-connect.html">XML/API</a>
+</div>
+</section>
+<section class="rez-content-card" id="faq">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-list">
+<div class="faq-item">
+<h3>What is a B2B transfer booking platform?</h3>
+<p>A B2B transfer booking platform allows approved travel businesses to search and book pre-arranged ground transportation for their customers between supported pickup and drop-off points.</p>
+</div>
+<div class="faq-item">
+<h3>How much transfer inventory is available through RezLive?</h3>
+<p>RezLive publicly states that it provides more than 5,000 transfer options across over 900 airport and city locations. Exact routes and services depend on live supplier availability.</p>
+</div>
+<div class="faq-item">
+<h3>Can agents book airport-to-hotel and hotel-to-airport transfers?</h3>
+<p>Agents can search supported airport and city transfer routes, including airport-to-hotel and hotel-to-airport requirements, subject to availability for the selected location and date.</p>
+</div>
+<div class="faq-item">
+<h3>Does RezLive offer private and shared transfers?</h3>
+<p>Yes. RezLive publicly describes its inventory as including private and shared car transfers. The service formats shown depend on the selected route and supplier.</p>
+</div>
+<div class="faq-item">
+<h3>Can RezLive be used for intercity or outstation transfers?</h3>
+<p>Travel agents can search supported city and intercity transfer requirements. Availability should be confirmed for the exact pickup point, destination, travel date and passenger count.</p>
+</div>
+<div class="faq-item">
+<h3>What information is required for an airport transfer?</h3>
+<p>Agents should provide accurate pickup and drop-off details, travel date, passenger and luggage information, a working customer contact number and the correct flight number and schedule.</p>
+</div>
+<div class="faq-item">
+<h3>What is a transfer voucher?</h3>
+<p>A transfer voucher is the booking document issued after the applicable payment and confirmation process. The traveller should keep it available and follow the pickup instructions shown on it.</p>
+</div>
+<div class="faq-item">
+<h3>Can a transfer booking be amended or cancelled?</h3>
+<p>Amendment and cancellation rules vary by route, supplier and booking condition. Agents should check the displayed policy before confirming the service.</p>
+</div>
+</div>
+</section>
+<form action="../mandrillmailsend.php" class="staticform" id="transferconnect" method="post" name="transferconnect">
+<div class="quick-contact-blk transfer-connect-form">
+<div class="quick-contact-hd">
+<span aria-hidden="true" class="phone-icon">☎</span>
+        Connect with us to know more
+      </div>
+<div class="quick-contact-form">
+<div class="quick-contact-l">
+<ul>
+<li>
+<label for="agencyname">Company Name <span class="allstarcolor">*</span></label>
+<input autocomplete="organization" id="agencyname" name="agencyname" placeholder="Enter Company Name" required="" type="text"/>
+</li>
+<li>
+<label for="personname">Contact Person <span class="allstarcolor">*</span></label>
+<input autocomplete="name" id="personname" name="personname" placeholder="Enter Your Name" required="" type="text"/>
+</li>
+<li>
+<label for="mobile">Telephone <span class="allstarcolor">*</span></label>
+<input autocomplete="tel" id="mobile" name="mobile" placeholder="Enter Your Telephone Number" required="" type="tel"/>
+</li>
+<li>
+<label for="website">Website</label>
+<input autocomplete="url" id="website" name="website" placeholder="Enter Your Website" type="url"/>
+</li>
+</ul>
+</div>
+<div class="quick-contact-r">
+<ul>
+<li>
+<label for="email">Email ID <span class="allstarcolor">*</span></label>
+<input autocomplete="email" id="email" name="email" placeholder="Enter Your Email ID" required="" type="email"/>
+</li>
+<li>
+<label for="countryId">Country <span class="allstarcolor">*</span></label>
+<select id="countryId" name="country" required="">
+<option value="">Select Country</option>
+</select>
+</li>
+<li>
+<label for="routeType">Transfer Requirement <span class="allstarcolor">*</span></label>
+<select id="routeType" name="route_type" required="">
+<option value="">Select Transfer Type</option>
+<option value="airport-hotel">Airport to Hotel</option>
+<option value="hotel-airport">Hotel to Airport</option>
+<option value="intercity">Intercity / Outstation</option>
+<option value="city-hotel">City / Hotel Transfer</option>
+<option value="private">Private Transfer</option>
+<option value="shared">Shared Transfer</option>
+<option value="other">Other Requirement</option>
+</select>
+</li>
+<li>
+<label for="pickup">Pickup Location <span class="allstarcolor">*</span></label>
+<input id="pickup" name="pickup_location" placeholder="Airport, Hotel, City or Address" required="" type="text"/>
+</li>
+<li>
+<label for="dropoff">Drop-off Location <span class="allstarcolor">*</span></label>
+<input id="dropoff" name="dropoff_location" placeholder="Hotel, Airport, City or Address" required="" type="text"/>
+</li>
+<li>
+<label for="requirements">Travel Details</label>
+<textarea id="requirements" name="comments" placeholder="Share travel date, flight details, passenger count, luggage and other requirements"></textarea>
+</li>
+<li class="disclaimer">
+<strong>Disclaimer:</strong> This form should not be used for cards, refunds or dispute-related communication. For disputes, write to
+              <a href="mailto:dispute@rezlive.com"><u>dispute@rezlive.com</u></a>.
+            </li>
+<li>
+<div aria-label="reCAPTCHA placeholder" class="recaptcha-placeholder">
+<span class="recaptcha-box"></span>
+<span>I'm not a robot<br/><small>reCAPTCHA verification</small></span>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="quick-contact-btn">
+<button type="submit">Submit</button>
+<input type="reset" value="Reset"/>
+</div>
+</div>
+</form>
+</article>
+</div>
+</div>
+</div>
+</section>
+<section class="footer-getstarted" id="footerabove">
+<div class="preview-prefooter">
+<div>
+<h3>Our Other Products</h3>
+<p><strong style="color:#f99f25;">REZ</strong><strong style="color:#2c99c1;">TEZ</strong>   |   Designer Voyages   |   Designer Packages</p>
+</div>
+<div>
+<h3>Accreditation and Affiliation</h3>
+<p>PATA   IATA   Incredible India   OTOAI</p>
+</div>
+</div>
+</section>
+</main>
+<footer id="footer">
+<div class="preview-footer">
+<div>
+<img alt="RezLive.com" src="assets/rezlive-footer-logo.png" style="width:170px;"/>
+<p>An Award Winning Global Reservation System<br/>By <strong style="color:#f99f25;">Travel Designer Group</strong></p>
+</div>
+<div>
+<ul>
+<li><a href="https://www.rezlive.com/">Home</a></li>
+<li><a href="https://www.rezlive.com/staticpagesrezlive/aboutus.html">About Us</a></li>
+<li><a href="https://www.rezlive.com/staticpagesrezlive/reach-us.html">Reach Us</a></li>
+<li><a href="https://www.rezlive.com/staticpagesrezlive/faq.html">FAQs</a></li>
+<li><a href="https://www.rezlive.com/staticpagesrezlive/careers.html">Careers</a></li>
+<li><a href="https://www.rezlive.com/staticpagesrezlive/smart-match.html">Smart Match</a></li>
+</ul>
+</div>
+<div>
+<h2>Stay in touch!</h2>
+<p>Subscribe to our newsletter and receive our latest updates.</p>
+<input class="newsletter" placeholder="Enter your email id" type="email"/>
+<button class="subscribe" type="button">Subscribe Now</button>
+</div>
+</div>
+</footer>
+</div>
+</div>
+<script>
+    // Existing RezLive country/city AJAX, validation and reCAPTCHA scripts can be retained in production.
+</script>
+</body>
+</html>
